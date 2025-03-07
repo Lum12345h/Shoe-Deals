@@ -97,10 +97,10 @@
             text-align: center;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            transition: transform 0.5s;
         }
         .product-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         footer {
             background-color: #1F3B4D;
@@ -115,7 +115,7 @@
             margin-top: 20px;
             padding: 20px;
             background-color: #fff;
-            border: 1px solid #ddd;
+            border: 1px solid #dddddd;
             border-radius: 5px;
         }
         
@@ -323,6 +323,7 @@
                     <a href="#" onclick="showPage('formalPage')">Formal</a>
                     <a href="#" onclick="showPage('footballPage')">Football</a>
                     <a href="#" onclick="showPage('basketballPage')">Basketball</a>
+                    <a href="#" onclick="showPage('allPage')">All</a>
                 </div>
             </div>
             <button class="button" onclick="showPage('checkoutPage')">Checkout</button>
@@ -379,6 +380,9 @@
                 </div>
                 <div class="product-item">
                     <h4><a href="#" onclick="showPage('basketballPage')">Basketball</a></h4>
+                </div>
+                <div class="product-item">
+                    <h4><a href="#" onclick="showPage('allPage')">All</a></h4>
                 </div>
             </div>
         </main>
@@ -552,6 +556,110 @@
         </main>
     </div>
     
+    <div id="allPage" style="display: none;">
+        <main>
+            <h2>All Products</h2>
+            <div class="product-list">
+                <!-- Running Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus">
+                    <h4>Nike Air Zoom Pegasus</h4>
+                    <p>$1,979.82</p>
+                    <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22">
+                    <h4>Adidas Ultraboost 22</h4>
+                    <p>$3,239.82</p>
+                    <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14">
+                    <h4>Brooks Ghost 14</h4>
+                    <p>$2,499.82</p>
+                    <button onclick="addToCart('Brooks Ghost 14', 2499.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8">
+                    <h4>Hoka One One Clifton 8</h4>
+                    <p>$2,899.82</p>
+                    <button onclick="addToCart('Hoka One One Clifton 8', 2899.82)">Add to Cart</button>
+                </div>
+                <!-- Training Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7">
+                    <h4>Nike Metcon 7</h4>
+                    <p>$3,099.82</p>
+                    <button onclick="addToCart('Nike Metcon 7', 3099.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1">
+                    <h4>Reebok Nano X1</h4>
+                    <p>$2,499.82</p>
+                    <button onclick="addToCart('Reebok Nano X1', 2499.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2">
+                    <h4>Under Armour HOVR Phantom 2</h4>
+                    <p>$2,999.82</p>
+                    <button onclick="addToCart('Under Armour HOVR Phantom 2', 2999.82)">Add to Cart</button>
+                </div>
+                <!-- Casual Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool">
+                    <h4>Vans Old Skool</h4>
+                    <p>$1,499.82</p>
+                    <button onclick="addToCart('Vans Old Skool', 1499.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star">
+                    <h4>Converse Chuck Taylor All Star</h4>
+                    <p>$1,299.82</p>
+                    <button onclick="addToCart('Converse Chuck Taylor All Star', 1299.82)">Add to Cart</button>
+                </div>
+                <!-- Formal Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot">
+                    <h4>Clarks Desert Boot</h4>
+                    <p>$2,499.82</p>
+                    <button onclick="addToCart('Clarks Desert Boot', 2499.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira">
+                    <h4>Geox Respira</h4>
+                    <p>$2,899.82</p>
+                    <button onclick="addToCart('Geox Respira', 2899.82)">Add to Cart</button>
+                </div>
+                <!-- Football Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14">
+                    <h4>Nike Mercurial Vapor 14</h4>
+                    <p>$3,199.82</p>
+                    <button onclick="addToCart('Nike Mercurial Vapor 14', 3199.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak">
+                    <h4>Adidas Predator Freak</h4>
+                    <p>$2,999.82</p>
+                    <button onclick="addToCart('Adidas Predator Freak', 2999.82)">Add to Cart</button>
+                </div>
+                <!-- Basketball Shoes -->
+                <div class="product-item">
+                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro">
+                    <h4>Air Jordan 1 Retro</h4>
+                    <p>$4,499.82</p>
+                    <button onclick="addToCart('Air Jordan 1 Retro', 4499.82)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18">
+                    <h4>Nike LeBron 18</h4>
+                    <p>$3,999.82</p>
+                    <button onclick="addToCart('Nike LeBron 18', 3999.82)">Add to Cart</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
     <div id="socialMediaPage" style="display: none;">
         <main>
             <h2>Social Media</h2>
@@ -660,7 +768,7 @@
         }
         
         function showPage(pageId) {
-            const pages = ['homePage', 'runningPage', 'trainingPage', 'casualPage', 'formalPage', 'footballPage', 'basketballPage', 'socialMediaPage', 'brandsPage', 'checkoutPage'];
+            const pages = ['homePage', 'runningPage', 'trainingPage', 'casualPage', 'formalPage', 'footballPage', 'basketballPage', 'socialMediaPage', 'brandsPage', 'checkoutPage', 'allPage'];
             pages.forEach(function(id) {
                 document.getElementById(id).style.display = 'none';
             });
