@@ -6,7 +6,8 @@
     <meta name="description" content="Find the best deals on shoes at Shoe Deals! We offer a wide range of stylish and comfortable shoes at great prices.">
     <meta name="keywords" content="shoes, discount shoes, price shoes, cheap shoes">
     <title>Shoe Deals - Great Prices on shoes</title>
-    <link rel="icon" type="image/png" width="150" height="150" href="https://imgur.com/dLBPGI5.png">
+    <link rel="icon" type="image/png" href="https://imgur.com/dLBPGI5.png">
+    <link rel="preload" href="https://imgur.com/cUXuSr8.png" as="image">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +15,6 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        
         header {
             background-color: #1F3B4D;
             color: #fff;
@@ -27,13 +27,13 @@
             height: 50px;
         }
         .logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    flex-grow: 1;
-}
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1;
+        }
         nav {
             position: relative;
         }
@@ -128,17 +128,15 @@
             border: 1px solid #dddddd;
             border-radius: 5px;
         }
-        
         .modal {
             display: none;
-            position: fixed; 
-            z-index: 1; 
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0);
+            height: 100%;
+            overflow: auto;
             background-color: rgba(0,0,0,0.4);
             padding-top: 60px;
         }
@@ -176,46 +174,44 @@
             background-color: #B8860B;
         }
         @media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .logo {
-        margin: 0 auto;
-    }
-    .logo-text {
-        margin-top: 10px;
-    }
-    nav {
-        width: 100%;
-        margin-top: 10px;
-    }
-    .dropdown {
-        width: 100%;
-    }
-    .products-button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .button {
-        width: 100%;
-        margin: 5px 0;
-    }
-    .product-list {
-        flex-direction: column;
-        align-items: center;
-    }
-    .product-item {
-        width: 80%;
-    }
-    .video-section iframe {
-        width: 100%;
-        height: 200px;
-    }
-}
-    </style>
-    <style>
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .logo {
+                margin: 0 auto;
+            }
+            .logo-text {
+                margin-top: 10px;
+            }
+            nav {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .dropdown {
+                width: 100%;
+            }
+            .products-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .product-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-item {
+                width: 80%;
+            }
+            .video-section iframe {
+                width: 100%;
+                height: 200px;
+            }
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -223,7 +219,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #1F3B4D; /* Updated */
+            background-color: #1F3B4D;
             color: #fff;
             padding: 10px;
             border-radius: 50%;
@@ -237,8 +233,6 @@
             background-color: #3E5C76;
             transform: scale(1.1);
         }
-    </style>
-    <style>
         .social-media-container, .brands-container {
             padding: 20px;
         }
@@ -265,8 +259,6 @@
             background-color: #1e90ff;
             color: #fff;
         }
-    </style>
-    <style>
         .video-section {
             margin-top: 20px;
             display: flex;
@@ -310,19 +302,19 @@
             <h2>Best Offers</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus">
+                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
                     <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22">
+                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
                     <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/WsCc40f.png" width="150" height="150" alt="New Balance Fresh Foam 1080">
+                    <img src="https://imgur.com/WsCc40f.png" width="150" height="150" alt="New Balance Fresh Foam 1080" loading="lazy">
                     <h4>New Balance Fresh Foam 1080</h4>
                     <p>$2,699.82</p>
                     <button onclick="addToCart('New Balance Fresh Foam 1080', 2699.82)">Add to Cart</button>
@@ -366,25 +358,25 @@
             <h2>Running</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus">
+                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
                     <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22">
+                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
                     <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14">
+                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
                     <h4>Brooks Ghost 14</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Brooks Ghost 14', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8">
+                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
                     <h4>Hoka One One Clifton 8</h4>
                     <p>$2,899.82</p>
                     <button onclick="addToCart('Hoka One One Clifton 8', 2899.82)">Add to Cart</button>
@@ -392,8 +384,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/bDsegiub-nw" allowfullscreen title="Nike Air Zoom Pegasus 38 Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/U0Dm27S0EHQ" allowfullscreen title="Brooks Ghost 14 Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/bDsegiub-nw" allowfullscreen title="Nike Air Zoom Pegasus 38 Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/U0Dm27S0EHQ" allowfullscreen title="Brooks Ghost 14 Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -403,19 +395,19 @@
             <h2>Training</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7">
+                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
                     <h4>Nike Metcon 7</h4>
                     <p>$3,099.82</p>
                     <button onclick="addToCart('Nike Metcon 7', 3099.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1">
+                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
                     <h4>Reebok Nano X1</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Reebok Nano X1', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2">
+                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
                     <h4>Under Armour HOVR Phantom 2</h4>
                     <p>$2,999.82</p>
                     <button onclick="addToCart('Under Armour HOVR Phantom 2', 2999.82)">Add to Cart</button>
@@ -423,8 +415,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/ZsF7fSr7LkI" allowfullscreen title="Nike Metcon 7 Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/mBukH5aEcZQ" allowfullscreen title="Reebok Nano X1 Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/ZsF7fSr7LkI" allowfullscreen title="Nike Metcon 7 Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/mBukH5aEcZQ" allowfullscreen title="Reebok Nano X1 Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -434,13 +426,13 @@
             <h2>Casual</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool">
+                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
                     <h4>Vans Old Skool</h4>
                     <p>$1,499.82</p>
                     <button onclick="addToCart('Vans Old Skool', 1499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star">
+                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
                     <h4>Converse Chuck Taylor All Star</h4>
                     <p>$1,299.82</p>
                     <button onclick="addToCart('Converse Chuck Taylor All Star', 1299.82)">Add to Cart</button>
@@ -448,8 +440,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/WqdNDyNcn9g" allowfullscreen title="Vans Old Skool Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/kJkGm_4pXXY" allowfullscreen title="Converse Chuck Taylor All Star Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/WqdNDyNcn9g" allowfullscreen title="Vans Old Skool Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/kJkGm_4pXXY" allowfullscreen title="Converse Chuck Taylor All Star Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -459,13 +451,13 @@
             <h2>Formal</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot">
+                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
                     <h4>Clarks Desert Boot</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Clarks Desert Boot', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira">
+                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
                     <h4>Geox Respira</h4>
                     <p>$2,899.82</p>
                     <button onclick="addToCart('Geox Respira', 2899.82)">Add to Cart</button>
@@ -473,8 +465,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/8K1kMCpTg8c" allowfullscreen title="Clarks Desert Boot Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/hxZFJJoTXuk" allowfullscreen title="Geox Respira Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/8K1kMCpTg8c" allowfullscreen title="Clarks Desert Boot Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/hxZFJJoTXuk" allowfullscreen title="Geox Respira Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -484,13 +476,13 @@
             <h2>Football</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14">
+                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
                     <h4>Nike Mercurial Vapor 14</h4>
                     <p>$3,199.82</p>
                     <button onclick="addToCart('Nike Mercurial Vapor 14', 3199.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak">
+                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
                     <h4>Adidas Predator Freak</h4>
                     <p>$2,999.82</p>
                     <button onclick="addToCart('Adidas Predator Freak', 2999.82)">Add to Cart</button>
@@ -498,8 +490,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/ay1agT26UV8" allowfullscreen title="Nike Mercurial Vapor 14 Elite Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/lklBgdxyu4E" allowfullscreen title="Adidas Predator Freak.1 Low Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/ay1agT26UV8" allowfullscreen title="Nike Mercurial Vapor 14 Elite Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/lklBgdxyu4E" allowfullscreen title="Adidas Predator Freak.1 Low Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -509,13 +501,13 @@
             <h2>Basketball</h2>
             <div class="product-list">
                 <div class="product-item">
-                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro">
+                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
                     <h4>Air Jordan 1 Retro</h4>
                     <p>$4,499.82</p>
                     <button onclick="addToCart('Air Jordan 1 Retro', 4499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18">
+                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
                     <h4>Nike LeBron 18</h4>
                     <p>$3,999.82</p>
                     <button onclick="addToCart('Nike LeBron 18', 3999.82)">Add to Cart</button>
@@ -523,8 +515,8 @@
             </div>
             <h3>Reviews</h3>
             <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/oeAVUOLAGjg" allowfullscreen title="Air Jordan 1 Retro Review"></iframe>
-                <iframe src="https://www.youtube.com/embed/gb4ewq1dhQQ" allowfullscreen title="Nike LeBron 18 Performance Review"></iframe>
+                <iframe src="https://www.youtube.com/embed/oeAVUOLAGjg" allowfullscreen title="Air Jordan 1 Retro Review" loading="lazy"></iframe>
+                <iframe src="https://www.youtube.com/embed/gb4ewq1dhQQ" allowfullscreen title="Nike LeBron 18 Performance Review" loading="lazy"></iframe>
             </div>
         </main>
     </div>
@@ -535,96 +527,96 @@
             <div class="product-list">
                 <!-- Running Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus">
+                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
                     <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22">
+                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
                     <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14">
+                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
                     <h4>Brooks Ghost 14</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Brooks Ghost 14', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8">
+                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
                     <h4>Hoka One One Clifton 8</h4>
                     <p>$2,899.82</p>
                     <button onclick="addToCart('Hoka One One Clifton 8', 2899.82)">Add to Cart</button>
                 </div>
                 <!-- Training Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7">
+                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
                     <h4>Nike Metcon 7</h4>
                     <p>$3,099.82</p>
                     <button onclick="addToCart('Nike Metcon 7', 3099.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1">
+                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
                     <h4>Reebok Nano X1</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Reebok Nano X1', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2">
+                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
                     <h4>Under Armour HOVR Phantom 2</h4>
                     <p>$2,999.82</p>
                     <button onclick="addToCart('Under Armour HOVR Phantom 2', 2999.82)">Add to Cart</button>
                 </div>
                 <!-- Casual Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool">
+                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
                     <h4>Vans Old Skool</h4>
                     <p>$1,499.82</p>
                     <button onclick="addToCart('Vans Old Skool', 1499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star">
+                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
                     <h4>Converse Chuck Taylor All Star</h4>
                     <p>$1,299.82</p>
                     <button onclick="addToCart('Converse Chuck Taylor All Star', 1299.82)">Add to Cart</button>
                 </div>
                 <!-- Formal Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot">
+                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
                     <h4>Clarks Desert Boot</h4>
                     <p>$2,499.82</p>
                     <button onclick="addToCart('Clarks Desert Boot', 2499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira">
+                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
                     <h4>Geox Respira</h4>
                     <p>$2,899.82</p>
                     <button onclick="addToCart('Geox Respira', 2899.82)">Add to Cart</button>
                 </div>
                 <!-- Football Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14">
+                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
                     <h4>Nike Mercurial Vapor 14</h4>
                     <p>$3,199.82</p>
                     <button onclick="addToCart('Nike Mercurial Vapor 14', 3199.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak">
+                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
                     <h4>Adidas Predator Freak</h4>
                     <p>$2,999.82</p>
                     <button onclick="addToCart('Adidas Predator Freak', 2999.82)">Add to Cart</button>
                 </div>
                 <!-- Basketball Shoes -->
                 <div class="product-item">
-                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro">
+                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
                     <h4>Air Jordan 1 Retro</h4>
                     <p>$4,499.82</p>
                     <button onclick="addToCart('Air Jordan 1 Retro', 4499.82)">Add to Cart</button>
                 </div>
                 <div class="product-item">
-                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18">
+                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
                     <h4>Nike LeBron 18</h4>
                     <p>$3,999.82</p>
                     <button onclick="addToCart('Nike LeBron 18', 3999.82)">Add to Cart</button>
