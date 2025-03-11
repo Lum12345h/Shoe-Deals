@@ -108,6 +108,7 @@
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s;
+            cursor: pointer;
         }
         .product-item:hover {
             transform: scale(1.1);
@@ -301,23 +302,20 @@
         <main>
             <h2>Best Offers</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
                     <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
-                    <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
                     <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
-                    <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('New Balance Fresh Foam 1080', 2699.82)">
                     <img src="https://imgur.com/WsCc40f.png" width="150" height="150" alt="New Balance Fresh Foam 1080" loading="lazy">
                     <h4>New Balance Fresh Foam 1080</h4>
                     <p>$2,699.82</p>
-                    <button onclick="addToCart('New Balance Fresh Foam 1080', 2699.82)">Add to Cart</button>
                 </div>
             </div>
 
@@ -357,29 +355,25 @@
         <main>
             <h2>Running</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
                     <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
-                    <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
                     <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
-                    <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)">
                     <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
                     <h4>Brooks Ghost 14</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Brooks Ghost 14', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)">
                     <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
                     <h4>Hoka One One Clifton 8</h4>
                     <p>$2,899.82</p>
-                    <button onclick="addToCart('Hoka One One Clifton 8', 2899.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -394,23 +388,20 @@
         <main>
             <h2>Training</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)">
                     <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
                     <h4>Nike Metcon 7</h4>
                     <p>$3,099.82</p>
-                    <button onclick="addToCart('Nike Metcon 7', 3099.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)">
                     <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
                     <h4>Reebok Nano X1</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Reebok Nano X1', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)">
                     <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
                     <h4>Under Armour HOVR Phantom 2</h4>
                     <p>$2,999.82</p>
-                    <button onclick="addToCart('Under Armour HOVR Phantom 2', 2999.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -425,17 +416,15 @@
         <main>
             <h2>Casual</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
                     <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
                     <h4>Vans Old Skool</h4>
                     <p>$1,499.82</p>
-                    <button onclick="addToCart('Vans Old Skool', 1499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)">
                     <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
                     <h4>Converse Chuck Taylor All Star</h4>
                     <p>$1,299.82</p>
-                    <button onclick="addToCart('Converse Chuck Taylor All Star', 1299.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -450,17 +439,15 @@
         <main>
             <h2>Formal</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)">
                     <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
                     <h4>Clarks Desert Boot</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Clarks Desert Boot', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Geox Respira', 2899.82)">
                     <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
                     <h4>Geox Respira</h4>
                     <p>$2,899.82</p>
-                    <button onclick="addToCart('Geox Respira', 2899.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -475,17 +462,15 @@
         <main>
             <h2>Football</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14', 3199.82)">
                     <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
                     <h4>Nike Mercurial Vapor 14</h4>
                     <p>$3,199.82</p>
-                    <button onclick="addToCart('Nike Mercurial Vapor 14', 3199.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Adidas Predator Freak', 2999.82)">
                     <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
                     <h4>Adidas Predator Freak</h4>
                     <p>$2,999.82</p>
-                    <button onclick="addToCart('Adidas Predator Freak', 2999.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -500,17 +485,15 @@
         <main>
             <h2>Basketball</h2>
             <div class="product-list">
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro', 4499.82)">
                     <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
                     <h4>Air Jordan 1 Retro</h4>
                     <p>$4,499.82</p>
-                    <button onclick="addToCart('Air Jordan 1 Retro', 4499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike LeBron 18', 3999.82)">
                     <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
                     <h4>Nike LeBron 18</h4>
                     <p>$3,999.82</p>
-                    <button onclick="addToCart('Nike LeBron 18', 3999.82)">Add to Cart</button>
                 </div>
             </div>
             <h3>Reviews</h3>
@@ -526,100 +509,85 @@
             <h2>All Products</h2>
             <div class="product-list">
                 <!-- Running Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
                     <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
                     <h4>Nike Air Zoom Pegasus</h4>
                     <p>$1,979.82</p>
-                    <button onclick="addToCart('Nike Air Zoom Pegasus', 1979.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
                     <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
                     <h4>Adidas Ultraboost 22</h4>
                     <p>$3,239.82</p>
-                    <button onclick="addToCart('Adidas Ultraboost 22', 3239.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)">
                     <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
                     <h4>Brooks Ghost 14</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Brooks Ghost 14', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)">
                     <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
                     <h4>Hoka One One Clifton 8</h4>
                     <p>$2,899.82</p>
-                    <button onclick="addToCart('Hoka One One Clifton 8', 2899.82)">Add to Cart</button>
                 </div>
                 <!-- Training Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)">
                     <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
                     <h4>Nike Metcon 7</h4>
                     <p>$3,099.82</p>
-                    <button onclick="addToCart('Nike Metcon 7', 3099.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)">
                     <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
                     <h4>Reebok Nano X1</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Reebok Nano X1', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)">
                     <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
                     <h4>Under Armour HOVR Phantom 2</h4>
                     <p>$2,999.82</p>
-                    <button onclick="addToCart('Under Armour HOVR Phantom 2', 2999.82)">Add to Cart</button>
                 </div>
                 <!-- Casual Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
                     <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
                     <h4>Vans Old Skool</h4>
                     <p>$1,499.82</p>
-                    <button onclick="addToCart('Vans Old Skool', 1499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)">
                     <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
                     <h4>Converse Chuck Taylor All Star</h4>
                     <p>$1,299.82</p>
-                    <button onclick="addToCart('Converse Chuck Taylor All Star', 1299.82)">Add to Cart</button>
                 </div>
                 <!-- Formal Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)">
                     <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
                     <h4>Clarks Desert Boot</h4>
                     <p>$2,499.82</p>
-                    <button onclick="addToCart('Clarks Desert Boot', 2499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Geox Respira', 2899.82)">
                     <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
                     <h4>Geox Respira</h4>
                     <p>$2,899.82</p>
-                    <button onclick="addToCart('Geox Respira', 2899.82)">Add to Cart</button>
                 </div>
                 <!-- Football Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14', 3199.82)">
                     <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
                     <h4>Nike Mercurial Vapor 14</h4>
                     <p>$3,199.82</p>
-                    <button onclick="addToCart('Nike Mercurial Vapor 14', 3199.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Adidas Predator Freak', 2999.82)">
                     <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
                     <h4>Adidas Predator Freak</h4>
                     <p>$2,999.82</p>
-                    <button onclick="addToCart('Adidas Predator Freak', 2999.82)">Add to Cart</button>
                 </div>
                 <!-- Basketball Shoes -->
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro', 4499.82)">
                     <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
                     <h4>Air Jordan 1 Retro</h4>
                     <p>$4,499.82</p>
-                    <button onclick="addToCart('Air Jordan 1 Retro', 4499.82)">Add to Cart</button>
                 </div>
-                <div class="product-item">
+                <div class="product-item" onclick="openShoeModal('Nike LeBron 18', 3999.82)">
                     <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
                     <h4>Nike LeBron 18</h4>
                     <p>$3,999.82</p>
-                    <button onclick="addToCart('Nike LeBron 18', 3999.82)">Add to Cart</button>
                 </div>
             </div>
         </main>
@@ -687,6 +655,36 @@
         </div>
     </div>
     
+    <div id="shoeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeShoeModal()">&times;</span>
+            <h2 id="shoeModalTitle"></h2>
+            <form id="shoeForm" onsubmit="return addToCartFromModal(event)">
+                <label for="size">Size:</label>
+                <select id="size" name="size" required>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select><br><br>
+                <label for="color">Color:</label>
+                <select id="color" name="color" required>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                </select><br><br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required><br><br>
+                <button type="submit" class="modal-button">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+    
     <footer>
         <p>&copy; 2025 Shoe Deals. All rights reserved.</p>
     </footer>
@@ -738,6 +736,31 @@
                 document.getElementById(id).style.display = 'none';
             });
             document.getElementById(pageId).style.display = 'block';
+        }
+
+        function openShoeModal(product, price) {
+            document.getElementById("shoeModalTitle").textContent = product;
+            document.getElementById("shoeModal").style.display = "block";
+            document.getElementById("shoeForm").dataset.product = product;
+            document.getElementById("shoeForm").dataset.price = price;
+        }
+
+        function closeShoeModal() {
+            document.getElementById("shoeModal").style.display = "none";
+        }
+
+        function addToCartFromModal(event) {
+            event.preventDefault();
+            const product = document.getElementById("shoeForm").dataset.product;
+            const price = parseFloat(document.getElementById("shoeForm").dataset.price);
+            const size = document.getElementById("size").value;
+            const color = document.getElementById("color").value;
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const totalPrice = price * quantity;
+            cart.push({ product: `${product} (Size: ${size}, Color: ${color}, Quantity: ${quantity})`, price: totalPrice });
+            total += totalPrice;
+            updateCartDisplay();
+            closeShoeModal();
         }
     </script>
     
