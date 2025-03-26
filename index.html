@@ -695,8 +695,6 @@
                     <option value="Red">Red</option>
                     <option value="Green">Green</option>
                 </select><br><br>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" value="1" required><br><br>
                 <button type="submit" class="modal-button">Add to Cart</button>
             </form>
         </div>
@@ -767,18 +765,16 @@
         }
 
         function addToCartFromModal(event) {
-            event.preventDefault();
-            const product = document.getElementById("shoeForm").dataset.product;
-            const price = parseFloat(document.getElementById("shoeForm").dataset.price);
-            const size = document.getElementById("size").value;
-            const color = document.getElementById("color").value;
-            const quantity = parseInt(document.getElementById("quantity").value);
-            const totalPrice = price * quantity;
-            cart.push({ product: `${product} (Size: ${size}, Color: ${color}, Quantity: ${quantity})`, price: totalPrice });
-            total += totalPrice;
-            updateCartDisplay();
-            closeShoeModal();
-        }
+    event.preventDefault();
+    const product = document.getElementById("shoeForm").dataset.product;
+    const price = parseFloat(document.getElementById("shoeForm").dataset.price);
+    const size = document.getElementById("size").value;
+    const color = document.getElementById("color").value;
+    cart.push({ product: `${product} (Size: ${size}, Color: ${color})`, price: price });
+    total += price;
+    updateCartDisplay();
+    closeShoeModal();
+}
     </script>
     
     <a href="#" class="back-to-top" onclick="showPage('homePage')">🏠</a>
