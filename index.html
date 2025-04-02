@@ -3,239 +3,653 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Find the best deals on shoes at Shoe Deals! We offer a wide range of stylish and comfortable shoes at great prices.">
-    <meta name="keywords" content="shoes, discount shoes, price shoes, cheap shoes">
-    <title>Shoe Deals - Great Prices on shoes</title>
+    <meta name="description" content="Find the best deals on shoes at Shoe Deals! Explore a wide range of stylish and comfortable running, training, casual, formal, football, and basketball shoes at great prices.">
+    <meta name="keywords" content="shoes, discount shoes, price shoes, cheap shoes, running shoes, training shoes, casual shoes, formal shoes, football boots, basketball sneakers, shoe deals, online shoe store, faq, language support">
+    <title>Shoe Deals - Great Prices on Quality Footwear</title>
     <link rel="icon" type="image/png" href="https://imgur.com/dLBPGI5.png">
-    <link rel="preload" href="https://imgur.com/cUXuSr8.png" as="image">
+    <!-- Preload key visual elements -->
+    <link rel="preload" href="https://imgur.com/aNUQkVQ.png" as="image"> <!-- Logo -->
+    <link rel="preload" href="https://imgur.com/cUXuSr8.png" as="image"> <!-- Example Product Image -->
+
+    <!-- Import Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* 1. Basic Reset & Global Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f9fafb; /* Lighter, cleaner background */
+            color: #374151; /* Slightly softer dark text */
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure footer sticks to bottom */
+        }
+
+        /* 2. Header & Navigation */
         header {
-            background-color: #1F3B4D;
-            color: #fff;
-            padding: 15px;
+            background-color: #1F3B4D; /* Deep Blue */
+            color: #ffffff;
+            padding: 1rem 2rem; /* Use rem units */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            position: sticky; /* Keep header visible on scroll */
+            top: 0;
+            z-index: 1000; /* Ensure header is above other content */
         }
+
         .logo {
-            height: 50px;
+            height: 55px; /* Slightly larger */
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Add bounce effect */
+            vertical-align: middle; /* Align better if text is next to it */
         }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-container {
+             display: flex;
+             align-items: center;
+             cursor: pointer; /* Make whole area clickable */
+        }
+
         .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
+            font-size: 1.75rem; /* Use rem */
+            font-weight: 700;
+            color: #ffffff;
             text-transform: uppercase;
-            text-align: center;
-            flex-grow: 1;
+            letter-spacing: 1.5px;
+            margin-left: 0.75rem; /* Space between logo image and text */
+            display: none; /* Initially hide text on smaller screens if needed */
         }
+
         nav {
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* Spacing between nav items */
         }
+
+        /* Buttons (Unified Style) */
+        .button, .products-button, .modal-button, .category-button, .language-button { /* Added language-button */
+            background-color: #DAA520; /* Goldenrod */
+            color: #ffffff;
+            padding: 0.65rem 1.2rem; /* Use rem */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            border-radius: 6px; /* Slightly more rounded */
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .button:hover, .products-button:hover, .modal-button:hover, .category-button:hover, .language-button:hover { /* Added language-button */
+            background-color: #b8860b; /* Darker Gold */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Specific Button Adjustments */
+        .products-button {
+            background: linear-gradient(135deg, #DAA520, #b8860b);
+        }
+        .products-button:hover {
+            background: linear-gradient(135deg, #b8860b, #DAA520);
+        }
+        .modal-button {
+             display: block;
+             width: 100%;
+             margin-top: 1rem;
+        }
+         .category-button {
+            background-color: #1F3B4D; /* Match header */
+            color: #fff;
+            width: 100%; /* Make category buttons fill container */
+        }
+         .category-button:hover {
+            background-color: #3E5C76; /* Lighter blue */
+        }
+        /* Language button specifically, if needed */
+        .language-button {
+            background-color: #DAA520; /* Goldenrod */
+            color: #ffffff;
+            padding: 0.65rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+
+        /* Dropdown Menu (Used for Products and Language) */
         .dropdown {
+            position: relative;
             display: inline-block;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #fff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            background-color: #ffffff;
+            min-width: 180px; /* Wider */
+            box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+            z-index: 1001; /* Above header */
+            border-radius: 6px;
+            overflow: hidden;
+            right: 0; /* Align to the right */
+            margin-top: 5px; /* Small gap */
+            border: 1px solid #e5e7eb; /* Light border */
         }
+
+        /* Specific positioning for language dropdown if needed */
+        .language-dropdown .dropdown-content {
+            /* Adjust if needed, e.g., min-width */
+             min-width: 160px;
+        }
+
         .dropdown:hover .dropdown-content {
             display: block;
+            animation: fadeInDown 0.3s ease-out; /* Add subtle animation */
         }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
+            color: #1F3B4D; /* Match header color */
+            padding: 12px 18px;
             text-decoration: none;
             display: block;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
         }
+
         .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-        .button {
-            background-color: #DAA520;
-            color: white;
-            padding: 10px 15px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #B8860B;
-        }
-        .products-button {
-            background: linear-gradient(135deg, #DAA520, #B8860B);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .products-button:hover {
-            background: linear-gradient(135deg, #B8860B, #DAA520);
-        }
-        main {
-            padding: 20px;
-        }
-        .product-category {
-            margin-bottom: 40px;
-        }
-        .product-list {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .product-item {
-            border: 3px solid #1F3B4D;
-            border-radius: 5px;
-            margin: 10px;
-            padding: 10px;
-            width: 150px;
-            text-align: center;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        .product-item:hover {
-            transform: scale(1.15);
-        }
-        footer {
             background-color: #1F3B4D;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
+            color: #ffffff;
+            padding-left: 22px; /* Indent on hover */
+        }
+
+        /* 3. Main Content & Page Sections */
+        #pageContainer {
+            flex-grow: 1; /* Make container take available vertical space */
+        }
+
+        main {
+            padding: 2rem; /* Use rem */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center content */
             width: 100%;
         }
-        .checkout-section {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
+
+        .page-section {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out;
+            visibility: hidden; /* Ensure it's not accessible when hidden */
         }
+
+        .page-section.active {
+            opacity: 1;
+            max-height: 10000px; /* Adjust if needed for very long pages */
+            visibility: visible;
+        }
+
+        h2 {
+            color: #1F3B4D;
+            font-size: 2rem; /* Larger headings */
+            font-weight: 700;
+            border-bottom: 3px solid #DAA520;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center; /* Center main headings */
+        }
+         h3 {
+             color: #1F3B4D;
+             font-size: 1.5rem;
+             margin-top: 2.5rem;
+             margin-bottom: 1.5rem;
+             text-align: center;
+        }
+         h4 { /* Product Titles */
+             margin: 0.8rem 0 0.4rem 0;
+             font-size: 1.05rem;
+             color: #1F3B4D;
+             font-weight: 600;
+        }
+
+        /* 4. Product Styling */
+        .product-category {
+            margin-bottom: 3rem;
+        }
+
+        .product-list {
+            display: grid; /* Use Grid for more control */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+            gap: 1.5rem; /* Spacing between grid items */
+            justify-content: center;
+        }
+
+        .product-item, .category-item { /* Combine styles */
+            border: 1px solid #e5e7eb; /* Lighter border */
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensure content stretches */
+        }
+
+        .product-item:hover, .category-item:hover {
+            transform: translateY(-6px); /* More pronounced lift */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-item img {
+             max-width: 100%;
+             height: 160px; /* Consistent height */
+             object-fit: contain; /* Scale image while preserving aspect ratio */
+             margin-bottom: 1rem;
+             border-radius: 4px; /* Slightly round image corners */
+        }
+
+        .product-item p { /* Price */
+            margin: 0;
+            font-weight: 700; /* Bolder price */
+            color: #b8860b; /* Darker Gold */
+            font-size: 1.1rem;
+            margin-top: auto; /* Push price towards the bottom */
+        }
+
+         /* Category links styling (for homepage categories) */
+         .category-item h4 { /* Use h4 for consistency */
+            margin: 0; /* Remove default margin */
+            font-size: 1.1rem;
+            color: #1F3B4D;
+            font-weight: 600;
+        }
+         .category-item a { /* Style the link within the category item */
+             text-decoration: none;
+             color: inherit; /* Inherit color */
+             display: block; /* Make link fill the item */
+             padding: 1rem 0; /* Add padding for better click area */
+             transition: color 0.3s ease;
+        }
+         .category-item a:hover {
+             color: #DAA520; /* Gold on hover */
+        }
+
+        /* 5. Footer */
+        footer {
+            background-color: #111827; /* Darker footer */
+            color: #9ca3af; /* Lighter gray text */
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: auto; /* Push footer to bottom */
+            font-size: 0.9rem;
+        }
+         footer p {
+             margin: 0 0 0.5rem 0; /* Space below copyright */
+        }
+         footer a { /* Style footer links */
+            color: #DAA520; /* Gold link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 0 0.5rem;
+         }
+         footer a:hover {
+            color: #ffffff; /* White on hover */
+         }
+
+        /* 6. Checkout & Cart */
+        .checkout-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+         #cart-items {
+             list-style: none;
+             padding: 0;
+             margin-bottom: 1.5rem;
+        }
+         #cart-items li {
+             padding: 0.8rem 0;
+             border-bottom: 1px dashed #e5e7eb; /* Dashed separator */
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             font-size: 1rem;
+        }
+         #cart-items li:last-child {
+             border-bottom: none;
+        }
+         #cart-items .empty-cart-message {
+            text-align: center;
+            color: #6b7280; /* Gray text */
+            font-style: italic;
+            padding: 1.5rem 0;
+         }
+         #cart-items button.remove-item { /* Style remove button */
+            background-color: #ef4444; /* Red */
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+            transition: background-color 0.2s ease;
+         }
+         #cart-items button.remove-item:hover {
+            background-color: #dc2626; /* Darker Red */
+         }
+         .cart-total {
+             text-align: right;
+             margin-top: 1.5rem;
+             font-size: 1.2rem;
+             font-weight: 700;
+             color: #1F3B4D;
+         }
+         #proceed-checkout-button:disabled {
+             background-color: #9ca3af; /* Gray out when disabled */
+             cursor: not-allowed;
+             transform: none;
+             box-shadow: none;
+         }
+
+
+        /* 7. Modals */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 2000; /* Above everything */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
+            background-color: rgba(0, 0, 0, 0.65); /* Darker overlay */
+            padding-top: 50px; /* Space from top */
+            backdrop-filter: blur(5px); /* Subtle blur effect */
+            animation: fadeIn 0.3s ease-out;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .modal-content {
-            background-color: #fefefe;
+            background-color: #ffffff;
             margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 300px;
-            border-radius: 5px;
+            padding: 2rem;
+            border: none; /* Remove border */
+            width: 90%;
+            max-width: 450px; /* Slightly wider */
+            border-radius: 10px; /* More rounded */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideInUp 0.4s ease-out;
         }
+        @keyframes slideInUp {
+             from { opacity: 0; transform: translateY(30px); }
+             to { opacity: 1; transform: translateY(0); }
+        }
+
         .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            color: #9ca3af; /* Gray */
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem; /* Larger close icon */
             font-weight: bold;
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
+
         .close:hover,
         .close:focus {
-            color: black;
+            color: #ef4444; /* Red on hover */
             text-decoration: none;
             cursor: pointer;
+            transform: rotate(90deg); /* Rotate effect */
         }
-        .modal-button {
+
+        .modal h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem; /* Adjust modal heading size */
+            text-align: left; /* Align modal headings left */
+            border-bottom: none; /* Remove border from modal heading */
+             color: #1F3B4D;
+        }
+
+        /* Modal Form Styles */
+        .modal form label {
             display: block;
-            margin: 20px 0;
-            background-color: #DAA520;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
         }
-        .modal-button:hover {
-            background-color: #B8860B;
+
+        .modal form input[type="text"],
+        .modal form input[type="email"],
+        .modal form select {
+            width: 100%; /* Use 100% width */
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db; /* Gray border */
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
+         .modal form input:focus, .modal form select:focus {
+            outline: none;
+            border-color: #DAA520; /* Gold focus border */
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3); /* Subtle glow */
+         }
+
+        /* 8. Responsive Design */
+        @media screen and (min-width: 769px) {
+            .logo-text {
+                display: inline-block; /* Show logo text on larger screens */
+            }
+            nav {
+                flex-wrap: nowrap; /* Prevent wrapping on large screens */
+            }
+        }
+
         @media screen and (max-width: 768px) {
             header {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                padding: 1rem 1.5rem;
+                 position: static; /* Remove sticky header on mobile */
             }
-            .logo {
-                margin: 0 auto;
+            .logo-container {
+                 margin-bottom: 0.75rem; /* Space below logo */
+                 justify-content: center;
+                 width: 100%;
             }
             .logo-text {
-                margin-top: 10px;
+                 display: inline-block; /* Ensure text shows on mobile */
+                 font-size: 1.5rem;
             }
             nav {
+                flex-wrap: wrap; /* Allow buttons to wrap */
+                justify-content: center;
                 width: 100%;
-                margin-top: 10px;
+                gap: 0.5rem; /* Adjust gap */
             }
             .dropdown {
-                width: 100%;
+                 width: auto; /* Don't force full width */
+                 flex-grow: 1; /* Allow dropdown button to grow */
             }
-            .products-button {
-                width: 100%;
-                margin-bottom: 10px;
+            .button, .products-button, .language-button { /* Added language-button */
+                flex-grow: 1; /* Allow buttons to grow */
+                width: auto; /* Adjust width */
+                padding: 0.6rem 1rem;
             }
-            .button {
-                width: 100%;
-                margin: 5px 0;
+            .dropdown-content {
+                 position: static; /* Stack dropdown below button */
+                 box-shadow: none;
+                 border-radius: 0;
+                 border-top: 1px solid #eee;
+                 margin-top: 5px;
+                 width: 100%; /* Full width on mobile */
             }
+             main {
+                 padding: 1.5rem;
+            }
+             h2 { font-size: 1.75rem; margin-bottom: 1.5rem;}
+             h3 { font-size: 1.3rem; margin-bottom: 1rem; margin-top: 2rem;}
+
             .product-list {
-                flex-direction: column;
-                align-items: center;
+                 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjust grid for smaller items */
+                 gap: 1rem;
             }
-            .product-item {
-                width: 80%;
+            .product-item img { height: 130px; }
+
+             .video-section iframe {
+                height: 220px;
             }
-            .video-section iframe {
-                width: 100%;
-                height: 200px;
+            .modal-content {
+                width: 90%;
+                padding: 1.5rem;
             }
+             .social-media-container ul, .brands-container ul {
+                 gap: 10px; /* Reduce gap */
+            }
+             .social-media-container ul li a, .brands-container ul li a {
+                 padding: 6px 12px; /* Smaller padding */
+                 font-size: 0.9rem;
+            }
+             /* FAQ specific responsive */
+             .faq-container details {
+                margin-bottom: 0.8rem;
+             }
+             .faq-container summary {
+                 padding: 0.8rem;
+                 font-size: 0.95rem;
+             }
+             .faq-container div { /* Content inside details */
+                 padding: 0.8rem 1rem;
+             }
         }
-        html {
-            scroll-behavior: smooth;
+
+         @media screen and (max-width: 480px) {
+             html { font-size: 15px; } /* Slightly smaller base font */
+             header { padding: 1rem; }
+             .logo { height: 45px; }
+             .logo-text { font-size: 1.3rem; }
+             nav { gap: 0.4rem; }
+             .button, .products-button, .modal-button, .category-button, .language-button { padding: 0.5rem 0.8rem; font-size: 0.9rem;} /* Added language-button */
+
+             main { padding: 1rem; }
+             h2 { font-size: 1.5rem; }
+             h3 { font-size: 1.2rem; }
+
+             .product-list {
+                 /* Switch to single column for very small screens if desired */
+                 /* grid-template-columns: 1fr; */
+                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Further adjust */
+                 gap: 0.8rem;
+            }
+            .product-item, .category-item { padding: 0.8rem; }
+            .product-item img { height: 110px; }
+            .product-item h4 { font-size: 1rem; }
+            .product-item p { font-size: 1rem; }
+
+             .video-section { gap: 1rem; }
+             .video-section iframe { height: 180px; }
+             .modal-content { padding: 1rem; }
+             .modal h2 { font-size: 1.3rem; }
+             .close { top: 10px; right: 15px; font-size: 1.8rem; }
+
+             .social-media-container ul, .brands-container ul {
+                 flex-direction: column; /* Stack links */
+                 align-items: center;
+             }
+             .social-media-container ul li, .brands-container ul li {
+                 width: 80%; /* Control width */
+             }
+             .social-media-container ul li a, .brands-container ul li a {
+                 display: block; /* Make link fill li */
+                 text-align: center;
+             }
+             .faq-container details {
+                 margin-bottom: 0.6rem;
+             }
+             .faq-container summary {
+                 padding: 0.7rem;
+                 font-size: 0.9rem;
+             }
         }
-        .back-to-top {
+
+        /* 9. Utility Styles & Enhancements */
+        .back-to-home {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background-color: #1F3B4D;
             color: #fff;
-            padding: 10px;
+            width: 50px; /* Fixed size */
+            height: 50px;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 1.5rem; /* Adjust icon size */
             text-decoration: none;
             text-align: center;
-            z-index: 1000;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            line-height: 50px; /* Vertically center icon */
+            z-index: 999;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Use flexbox for centering */
+            justify-content: center;
+            align-items: center;
         }
-        .back-to-top:hover {
-            background-color: #3E5C76;
-            transform: scale(1.1);
+        .back-to-home:hover {
+            background-color: #3E5C76; /* Lighter Blue */
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
         }
+
+        /* 10. Social Media & Brands Sections */
         .social-media-container, .brands-container {
-            padding: 20px;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            border: 1px solid #e5e7eb;
         }
         .social-media-container ul, .brands-container ul {
             list-style: none;
@@ -243,39 +657,130 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-        }
-        .social-media-container ul li, .brands-container ul li {
-            margin: 10px;
-            font-size: 18px;
+            gap: 1rem; /* Spacing */
         }
         .social-media-container ul li a, .brands-container ul li a {
             text-decoration: none;
-            color: #1e90ff;
-            border: 1px solid #1e90ff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            color: #1F3B4D; /* Match header color */
+            border: 2px solid #1F3B4D;
+            padding: 0.6rem 1.2rem; /* Adjust padding */
+            border-radius: 50px; /* Pill shape */
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            display: inline-block; /* Ensure transform works */
         }
         .social-media-container ul li a:hover, .brands-container ul li a:hover {
-            background-color: #1e90ff;
+            background-color: #1F3B4D;
             color: #fff;
+            transform: translateY(-2px);
         }
+
+        /* 11. Video Section */
         .video-section {
-            margin-top: 20px;
+            margin-top: 2rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            gap: 1.5rem; /* Spacing between videos */
+            justify-content: center; /* Center videos */
         }
         .video-section iframe {
-            width: 45%;
-            max-width: 500px;
-            height: 280px;
+            width: 100%;
+            max-width: 520px; /* Limit max width */
+            height: 290px;
             border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
+        /* 12. Customer Testimonials */
+         .testimonials-container {
+            margin-top: 2.5rem;
+         }
+         blockquote {
+             border-left: 5px solid #DAA520; /* Accent border */
+             margin: 1.5rem 0;
+             padding: 1rem 1.5rem;
+             background-color: #ffffff;
+             border-radius: 0 8px 8px 0;
+             box-shadow: 0 3px 6px rgba(0,0,0,0.07);
+             font-style: italic;
+             color: #4b5563; /* Slightly darker gray */
+             position: relative;
+        }
+         blockquote::before { /* Optional quote graphic */
+             content: '“';
+             font-size: 3rem;
+             color: #DAA520;
+             opacity: 0.2;
+             position: absolute;
+             left: 10px;
+             top: -10px;
+         }
+         blockquote cite {
+             display: block;
+             margin-top: 0.8rem;
+             font-style: normal;
+             font-weight: 600;
+             color: #1F3B4D;
+             text-align: right;
+        }
+
+        /* 13. FAQ Section Styling */
+        .faq-container {
+            margin-top: 2rem;
+            max-width: 800px; /* Limit width for readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .faq-container details {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .faq-container details:hover {
+             box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        .faq-container details[open] summary {
+             border-bottom: 1px solid #e5e7eb;
+             background-color: #f9fafb; /* Slightly different bg when open */
+        }
+        .faq-container summary {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #1F3B4D;
+            cursor: pointer;
+            list-style: none; /* Remove default marker */
+            display: flex; /* Use flex to align custom marker */
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0; /* Match top corners */
+            transition: background-color 0.3s ease;
+        }
+        .faq-container summary::-webkit-details-marker {
+            display: none; /* Hide default marker (Chrome/Safari) */
+        }
+        .faq-container summary::after { /* Custom marker */
+            content: '+';
+            font-size: 1.4rem;
+            color: #DAA520;
+            transition: transform 0.3s ease;
+        }
+        .faq-container details[open] summary::after {
+            transform: rotate(45deg); /* Rotate plus to 'x' */
+        }
+        .faq-container details div { /* Content inside details */
+            padding: 1rem 1.5rem;
+            color: #374151;
+            border-top: none; /* Ensure no double border */
+            border-radius: 0 0 8px 8px; /* Match bottom corners */
+        }
+
     </style>
-    
-<!-- Matomo -->
+
+<!-- Matomo Analytics -->
 <script>
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -289,494 +794,1057 @@
       g.async=true; g.src='https://cdn.matomo.cloud/shoedeals.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
     })();
   </script>
-  <!-- End Matomo Code -->
-  
+<!-- End Matomo Code -->
+
 </head>
 <body>
     <header>
-        <img src="https://imgur.com/aNUQkVQ.png" alt="Shoe Deals Logo" class="logo" onclick="showPage('homePage')" style="cursor: pointer;">
-        <div class="logo-text">SHOE DEALS</div>
+        <div class="logo-container" onclick="showPage('homePage')" title="Go to Homepage">
+             <img src="https://imgur.com/aNUQkVQ.png" alt="Shoe Deals Logo" class="logo">
+             <span class="logo-text">SHOE DEALS</span>
+        </div>
         <nav>
             <div class="dropdown">
-                <button class="products-button">Products</button>
+                <button class="products-button" data-translate="products_button">Products</button>
                 <div class="dropdown-content">
-                    <a href="#" onclick="showPage('runningPage')">Running</a>
-                    <a href="#" onclick="showPage('trainingPage')">Training</a>
-                    <a href="#" onclick="showPage('casualPage')">Casual</a>
-                    <a href="#" onclick="showPage('formalPage')">Formal</a>
-                    <a href="#" onclick="showPage('footballPage')">Football</a>
-                    <a href="#" onclick="showPage('basketballPage')">Basketball</a>
-                    <a href="#" onclick="showPage('allPage')">All</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('runningPage')" data-translate="category_running">Running</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('trainingPage')" data-translate="category_training">Training</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('casualPage')" data-translate="category_casual">Casual</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('formalPage')" data-translate="category_formal">Formal</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('footballPage')" data-translate="category_football">Football</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('basketballPage')" data-translate="category_basketball">Basketball</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('allPage')" data-translate="category_all">All Products</a>
                 </div>
             </div>
-            <button class="button" onclick="showPage('checkoutPage')">Checkout</button>
-            <button class="button" onclick="showPage('socialMediaPage')">Social Media</button>
-            <button class="button" onclick="showPage('brandsPage')">Brands</button>
+            <button class="button" onclick="showPage('checkoutPage')" data-translate="cart_button">Cart</button>
+            <button class="button" onclick="showPage('socialMediaPage')" data-translate="social_button">Social</button>
+            <button class="button" onclick="showPage('brandsPage')" data-translate="brands_button">Brands</button>
+            <!-- Language Dropdown -->
+            <div class="dropdown language-dropdown">
+                <button class="button language-button" id="languageButton">Language (EN)</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('en')">English</a>
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('es')">Español</a>
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('de')">Deutsch</a>
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('zh')">中文 (Chinese)</a>
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('fr')">Français</a>
+                    <a href="#" onclick="event.preventDefault(); changeLanguage('hi')">हिन्दी (Hindi)</a>
+                </div>
+            </div>
         </nav>
     </header>
-    
-    <div id="homePage" style="display: block;">
-        <main>
-            <h2>Best Offers</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
-                    <h4>Nike Air Zoom Pegasus</h4>
-                    <p>$1,979.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
-                    <h4>Adidas Ultraboost 22</h4>
-                    <p>$3,239.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('New Balance Fresh Foam 1080', 2699.82)">
-                    <img src="https://imgur.com/WsCc40f.png" width="150" height="150" alt="New Balance Fresh Foam 1080" loading="lazy">
-                    <h4>New Balance Fresh Foam 1080</h4>
-                    <p>$2,699.82</p>
-                </div>
-            </div>
 
-            <h2>Customer Testimonials</h2>
-            <blockquote>"Great shoes! Fast delivery!" - John D.</blockquote>
-            <blockquote>"Amazing quality and comfort!" - Sarah M.</blockquote>
-            <blockquote>"Best shopping experience!" - Mike L.</blockquote>
+    <!-- Page Sections Wrapper -->
+    <div id="pageContainer">
 
-            <h2>Categories</h2>
-            <div class="product-list">
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('runningPage')">Running</a></h4>
+        <!-- ========= HOME PAGE ========= -->
+        <div id="homePage" class="page-section active">
+            <main>
+                <h2 data-translate="featured_deals">Featured Deals</h2>
+                <section class="product-list" aria-label="Featured Products">
+                    <!-- Product items -->
+                    <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
+                        <img src="https://imgur.com/cUXuSr8.png" alt="Nike Air Zoom Pegasus Running Shoe" loading="lazy">
+                        <h4>Nike Air Zoom Pegasus</h4>
+                        <p>$1,979.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
+                        <img src="https://imgur.com/zCTNxBJ.png" alt="Adidas Ultraboost 22 Running Shoe" loading="lazy">
+                        <h4>Adidas Ultraboost 22</h4>
+                        <p>$3,239.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('New Balance Fresh Foam 1080', 2699.82)">
+                        <img src="https://imgur.com/WsCc40f.png" alt="New Balance Fresh Foam 1080 Running Shoe" loading="lazy">
+                        <h4>New Balance Fresh Foam 1080</h4>
+                        <p>$2,699.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
+                        <img src="https://imgur.com/PVkNZ31.png" alt="Vans Old Skool Casual Shoe" loading="lazy">
+                        <h4>Vans Old Skool</h4>
+                        <p>$1,499.82</p>
+                    </div>
+                </section>
+
+                <h3 data-translate="shop_by_category">Shop by Category</h3>
+                <section class="product-list" aria-label="Product Categories">
+                    <!-- Category items (using similar style to products) -->
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('runningPage')"><h4 data-translate="category_running">Running</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('trainingPage')"><h4 data-translate="category_training">Training</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('casualPage')"><h4 data-translate="category_casual">Casual</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('formalPage')"><h4 data-translate="category_formal">Formal</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('footballPage')"><h4 data-translate="category_football">Football</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('basketballPage')"><h4 data-translate="category_basketball">Basketball</h4></a></div>
+                     <div class="category-item"><a href="#" onclick="event.preventDefault(); showPage('allPage')"><h4 data-translate="category_all">All Products</h4></a></div>
+                </section>
+
+                <h3 data-translate="customer_testimonials_title">What Our Customers Say</h3>
+                <section class="testimonials-container" aria-label="Customer Testimonials">
+                    <blockquote data-translate="testimonial_1">"Fantastic selection and unbeatable prices. My go-to place for running shoes now!" <cite>– Alex R.</cite></blockquote>
+                    <blockquote data-translate="testimonial_2">"The checkout process was smooth, and my shoes arrived even faster than expected. Highly recommend!" <cite>– Maria S.</cite></blockquote>
+                    <blockquote data-translate="testimonial_3">"Great quality shoes that look even better in person. The customer service was helpful too." <cite>– David L.</cite></blockquote>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= RUNNING PAGE ========= -->
+        <div id="runningPage" class="page-section">
+             <main>
+                <h2 data-translate="category_running">Running Shoes</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="running_description">Hit the ground running with our top picks for comfort, speed, and endurance.</p>
+                <section class="product-list" aria-label="Running Shoes">
+                    <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
+                        <img src="https://imgur.com/cUXuSr8.png" alt="Nike Air Zoom Pegasus Running Shoe" loading="lazy">
+                        <h4>Nike Air Zoom Pegasus</h4>
+                        <p>$1,979.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
+                        <img src="https://imgur.com/zCTNxBJ.png" alt="Adidas Ultraboost 22 Running Shoe" loading="lazy">
+                        <h4>Adidas Ultraboost 22</h4>
+                        <p>$3,239.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)">
+                        <img src="https://imgur.com/qkH9rNS.png" alt="Brooks Ghost 14 Running Shoe" loading="lazy">
+                        <h4>Brooks Ghost 14</h4>
+                        <p>$2,499.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)">
+                        <img src="https://imgur.com/eea8qr0.png" alt="Hoka One One Clifton 8 Running Shoe" loading="lazy">
+                        <h4>Hoka One One Clifton 8</h4>
+                        <p>$2,899.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('New Balance Fresh Foam 1080', 2699.82)">
+                        <img src="https://imgur.com/WsCc40f.png" alt="New Balance Fresh Foam 1080 Running Shoe" loading="lazy">
+                        <h4>New Balance Fresh Foam 1080</h4>
+                        <p>$2,699.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="expert_reviews">Expert Reviews</h3>
+                <section class="video-section" aria-label="Running Shoe Reviews">
+                    <iframe src="https://www.youtube.com/embed/bDsegiub-nw" allowfullscreen title="Nike Air Zoom Pegasus 38 Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/U0Dm27S0EHQ" allowfullscreen title="Brooks Ghost 14 Review" loading="lazy"></iframe>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= TRAINING PAGE ========= -->
+        <div id="trainingPage" class="page-section">
+             <main>
+                <h2 data-translate="category_training">Training & Gym Shoes</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="training_description">Support your workouts with shoes designed for stability and performance.</p>
+                <section class="product-list" aria-label="Training Shoes">
+                    <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)">
+                        <img src="https://imgur.com/0a99aCx.png" alt="Nike Metcon 7 Training Shoe" loading="lazy">
+                        <h4>Nike Metcon 7</h4>
+                        <p>$3,099.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)">
+                        <img src="https://imgur.com/Oh3F8JI.png" alt="Reebok Nano X1 Training Shoe" loading="lazy">
+                        <h4>Reebok Nano X1</h4>
+                        <p>$2,499.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)">
+                        <img src="https://imgur.com/RkfSJbm.png" alt="Under Armour HOVR Phantom 2 Training Shoe" loading="lazy">
+                        <h4>Under Armour HOVR Phantom 2</h4>
+                        <p>$2,999.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="expert_reviews">Expert Reviews</h3>
+                <section class="video-section" aria-label="Training Shoe Reviews">
+                    <iframe src="https://www.youtube.com/embed/ZsF7fSr7LkI" allowfullscreen title="Nike Metcon 7 Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/mBukH5aEcZQ" allowfullscreen title="Reebok Nano X1 Review" loading="lazy"></iframe>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= CASUAL PAGE ========= -->
+        <div id="casualPage" class="page-section">
+            <main>
+                <h2 data-translate="category_casual">Casual Sneakers & Lifestyle</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="casual_description">Everyday style meets comfort. Find your perfect pair for any occasion.</p>
+                <section class="product-list" aria-label="Casual Shoes">
+                    <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
+                        <img src="https://imgur.com/PVkNZ31.png" alt="Vans Old Skool Casual Shoe" loading="lazy">
+                        <h4>Vans Old Skool</h4>
+                        <p>$1,499.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)">
+                        <img src="https://imgur.com/QDF8iiP.png" alt="Converse Chuck Taylor All Star High Top" loading="lazy">
+                        <h4>Converse Chuck Taylor All Star</h4>
+                        <p>$1,299.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Adidas Stan Smith', 1799.82)">
+                        <img src="https://imgur.com/ins33Hv.png" alt="Adidas Stan Smith Casual Sneaker" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>Adidas Stan Smith</h4>
+                        <p>$1,799.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Nike Air Force 1', 2199.82)">
+                        <img src="https://imgur.com/ufRjoYE.png" alt="Nike Air Force 1 Low Casual Sneaker" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>Nike Air Force 1 '07</h4>
+                        <p>$2,199.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="style_spotlights">Style Spotlights</h3>
+                <section class="video-section" aria-label="Casual Shoe Reviews">
+                    <iframe src="https://www.youtube.com/embed/WqdNDyNcn9g" allowfullscreen title="Vans Old Skool Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/kJkGm_4pXXY" allowfullscreen title="Converse Chuck Taylor All Star Review" loading="lazy"></iframe>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= FORMAL PAGE ========= -->
+        <div id="formalPage" class="page-section">
+            <main>
+                <h2 data-translate="category_formal">Formal & Business Shoes</h2>
+                 <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="formal_description">Step up your style with sophisticated footwear for work or special events.</p>
+                <section class="product-list" aria-label="Formal Shoes">
+                    <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)">
+                        <img src="https://imgur.com/AWpH3MQ.png" alt="Clarks Desert Boot" loading="lazy">
+                        <h4>Clarks Desert Boot</h4>
+                        <p>$2,499.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Geox Respira Uomo', 2899.82)">
+                        <img src="https://imgur.com/lKTIOBM.png" alt="Geox Respira Uomo Formal Shoe" loading="lazy">
+                        <h4>Geox Respira Uomo</h4>
+                        <p>$2,899.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('ECCO Helsinki Bike Toe Tie', 2799.82)">
+                        <img src="https://imgur.com/nSTO2wG.png" alt="ECCO Helsinki Formal Shoe" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>ECCO Helsinki Bike Toe</h4>
+                        <p>$2,799.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="style_comfort_insights">Style & Comfort Insights</h3>
+                <section class="video-section" aria-label="Formal Shoe Reviews">
+                    <iframe src="https://www.youtube.com/embed/8K1kMCpTg8c" allowfullscreen title="Clarks Desert Boot Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/hxZFJJoTXuk" allowfullscreen title="Geox Respira Review" loading="lazy"></iframe>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= FOOTBALL PAGE ========= -->
+        <div id="footballPage" class="page-section">
+            <main>
+                <h2 data-translate="category_football">Football Boots</h2>
+                 <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="football_description">Dominate the pitch with the latest football boots designed for speed, control, and power.</p>
+                <section class="product-list" aria-label="Football Boots">
+                    <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14 Elite', 3199.82)">
+                        <img src="https://imgur.com/MBYwb4V.png" alt="Nike Mercurial Vapor 14 Elite FG Football Boot" loading="lazy">
+                        <h4>Nike Mercurial Vapor 14 Elite</h4>
+                        <p>$3,199.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Predator Freak.1 FG', 2999.82)">
+                        <img src="https://imgur.com/26JjBeQ.png" alt="Adidas Predator Freak.1 FG Football Boot" loading="lazy">
+                        <h4>Adidas Predator Freak.1 FG</h4>
+                        <p>$2,999.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Puma Future Z 1.2 FG/AG', 2899.82)">
+                        <img src="https://imgur.com/sHj36am.png" alt="Puma Future Z Football Boot" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>Puma Future Z 1.2 FG/AG</h4>
+                        <p>$2,899.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="on_pitch_reviews">On-Pitch Performance Reviews</h3>
+                <section class="video-section" aria-label="Football Boot Reviews">
+                    <iframe src="https://www.youtube.com/embed/ay1agT26UV8" allowfullscreen title="Nike Mercurial Vapor 14 Elite Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/lklBgdxyu4E" allowfullscreen title="Adidas Predator Freak.1 Low Review" loading="lazy"></iframe>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= BASKETBALL PAGE ========= -->
+        <div id="basketballPage" class="page-section">
+            <main>
+                <h2 data-translate="category_basketball">Basketball Shoes</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="basketball_description">Elevate your game with high-performance basketball sneakers offering superior grip and support.</p>
+                <section class="product-list" aria-label="Basketball Shoes">
+                    <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro High OG', 4499.82)">
+                        <img src="https://imgur.com/iTOGVmN.png" alt="Air Jordan 1 Retro High OG Basketball Shoe" loading="lazy">
+                        <h4>Air Jordan 1 Retro High OG</h4>
+                        <p>$4,499.82</p>
+                    </div>
+                    <div class="product-item" onclick="openShoeModal('Nike LeBron 19', 3999.82)"> <!-- Updated name -->
+                        <img src="https://imgur.com/82W7SmX.png" alt="Nike LeBron 19 Basketball Shoe" loading="lazy">
+                        <h4>Nike LeBron 19</h4> <!-- Updated name -->
+                        <p>$3,999.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Adidas Dame 8', 3399.82)">
+                        <img src="https://imgur.com/Q5iuOed.png" alt="Adidas Dame 8 Basketball Shoe" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>Adidas Dame 8</h4>
+                        <p>$3,399.82</p>
+                    </div>
+                     <div class="product-item" onclick="openShoeModal('Under Armour Curry 9', 3599.82)">
+                        <img src="https://imgur.com/duUTOLw.png" alt="Under Armour Curry 9 Basketball Shoe" loading="lazy"> <!-- Placeholder - replace with actual image if available -->
+                        <h4>Under Armour Curry 9</h4>
+                        <p>$3,599.82</p>
+                    </div>
+                </section>
+                <h3 data-translate="court_performance_reviews">Court Performance Reviews</h3>
+                <section class="video-section" aria-label="Basketball Shoe Reviews">
+                    <iframe src="https://www.youtube.com/embed/oeAVUOLAGjg" allowfullscreen title="Air Jordan 1 Retro Review" loading="lazy"></iframe>
+                    <iframe src="https://www.youtube.com/embed/gb4ewq1dhQQ" allowfullscreen title="Nike LeBron 18 Performance Review" loading="lazy"></iframe> <!-- Keep 18 review if 19 not available -->
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= ALL PRODUCTS PAGE ========= -->
+        <div id="allPage" class="page-section">
+             <main>
+                <h2 data-translate="category_all">All Products</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="all_products_description">Browse our complete collection across all categories.</p>
+                <section class="product-list" aria-label="All Products">
+                    <!-- Running Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)"> <img src="https://imgur.com/cUXuSr8.png" alt="Nike Air Zoom Pegasus" loading="lazy"> <h4>Nike Air Zoom Pegasus</h4> <p>$1,979.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)"> <img src="https://imgur.com/zCTNxBJ.png" alt="Adidas Ultraboost 22" loading="lazy"> <h4>Adidas Ultraboost 22</h4> <p>$3,239.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)"> <img src="https://imgur.com/qkH9rNS.png" alt="Brooks Ghost 14" loading="lazy"> <h4>Brooks Ghost 14</h4> <p>$2,499.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)"> <img src="https://imgur.com/eea8qr0.png" alt="Hoka One One Clifton 8" loading="lazy"> <h4>Hoka One One Clifton 8</h4> <p>$2,899.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('New Balance Fresh Foam 1080', 2699.82)"> <img src="https://imgur.com/WsCc40f.png" alt="New Balance Fresh Foam 1080" loading="lazy"> <h4>New Balance Fresh Foam 1080</h4> <p>$2,699.82</p> </div>
+                    <!-- Training Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)"> <img src="https://imgur.com/0a99aCx.png" alt="Nike Metcon 7" loading="lazy"> <h4>Nike Metcon 7</h4> <p>$3,099.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)"> <img src="https://imgur.com/Oh3F8JI.png" alt="Reebok Nano X1" loading="lazy"> <h4>Reebok Nano X1</h4> <p>$2,499.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)"> <img src="https://imgur.com/RkfSJbm.png" alt="Under Armour HOVR Phantom 2" loading="lazy"> <h4>Under Armour HOVR Phantom 2</h4> <p>$2,999.82</p> </div>
+                    <!-- Casual Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)"> <img src="https://imgur.com/PVkNZ31.png" alt="Vans Old Skool" loading="lazy"> <h4>Vans Old Skool</h4> <p>$1,499.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)"> <img src="https://imgur.com/QDF8iiP.png" alt="Converse Chuck Taylor All Star" loading="lazy"> <h4>Converse Chuck Taylor All Star</h4> <p>$1,299.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Stan Smith', 1799.82)"> <img src="https://imgur.com/ins33Hv.png" alt="Adidas Stan Smith" loading="lazy"> <h4>Adidas Stan Smith</h4> <p>$1,799.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Nike Air Force 1', 2199.82)"> <img src="https://imgur.com/ufRjoYE.png" alt="Nike Air Force 1 '07" loading="lazy"> <h4>Nike Air Force 1 '07</h4> <p>$2,199.82</p> </div>
+                    <!-- Formal Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)"> <img src="https://imgur.com/AWpH3MQ.png" alt="Clarks Desert Boot" loading="lazy"> <h4>Clarks Desert Boot</h4> <p>$2,499.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Geox Respira Uomo', 2899.82)"> <img src="https://imgur.com/lKTIOBM.png" alt="Geox Respira Uomo" loading="lazy"> <h4>Geox Respira Uomo</h4> <p>$2,899.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('ECCO Helsinki Bike Toe Tie', 2799.82)"> <img src="https://imgur.com/nSTO2wG.png" alt="ECCO Helsinki Bike Toe" loading="lazy"> <h4>ECCO Helsinki Bike Toe</h4> <p>$2,799.82</p> </div>
+                    <!-- Football Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14 Elite', 3199.82)"> <img src="https://imgur.com/MBYwb4V.png" alt="Nike Mercurial Vapor 14 Elite" loading="lazy"> <h4>Nike Mercurial Vapor 14 Elite</h4> <p>$3,199.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Predator Freak.1 FG', 2999.82)"> <img src="https://imgur.com/26JjBeQ.png" alt="Adidas Predator Freak.1 FG" loading="lazy"> <h4>Adidas Predator Freak.1 FG</h4> <p>$2,999.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Puma Future Z 1.2 FG/AG', 2899.82)"> <img src="https://imgur.com/sHj36am.png" alt="Puma Future Z 1.2 FG/AG" loading="lazy"> <h4>Puma Future Z 1.2 FG/AG</h4> <p>$2,899.82</p> </div>
+                    <!-- Basketball Shoes -->
+                    <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro High OG', 4499.82)"> <img src="https://imgur.com/iTOGVmN.png" alt="Air Jordan 1 Retro High OG" loading="lazy"> <h4>Air Jordan 1 Retro High OG</h4> <p>$4,499.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Nike LeBron 19', 3999.82)"> <img src="https://imgur.com/82W7SmX.png" alt="Nike LeBron 19" loading="lazy"> <h4>Nike LeBron 19</h4> <p>$3,999.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Adidas Dame 8', 3399.82)"> <img src="https://imgur.com/Q5iuOed.png" alt="Adidas Dame 8" loading="lazy"> <h4>Adidas Dame 8</h4> <p>$3,399.82</p> </div>
+                    <div class="product-item" onclick="openShoeModal('Under Armour Curry 9', 3599.82)"> <img src="https://imgur.com/duUTOLw.png" alt="Under Armour Curry 9" loading="lazy"> <h4>Under Armour Curry 9</h4> <p>$3,599.82</p> </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- ========= SOCIAL MEDIA PAGE ========= -->
+        <div id="socialMediaPage" class="page-section">
+            <main>
+                <h2 data-translate="connect_with_us">Connect With Us</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="social_media_description">Follow us on social media for the latest news, deals, and style inspiration!</p>
+                <div class="social-media-container">
+                    <ul>
+                        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                        <li><a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                        <li><a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    </ul>
                 </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('trainingPage')">Training</a></h4>
+            </main>
+        </div>
+
+        <!-- ========= BRANDS PAGE ========= -->
+        <div id="brandsPage" class="page-section">
+            <main>
+                <h2 data-translate="shop_by_brand">Shop By Brand</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #4b5563;" data-translate="brands_description">Explore products from your favorite footwear brands.</p>
+                <div class="brands-container">
+                    <ul>
+                        <li><a href="https://www.nike.com" target="_blank" rel="noopener noreferrer">Nike</a></li>
+                        <li><a href="https://www.adidas.com" target="_blank" rel="noopener noreferrer">Adidas</a></li>
+                        <li><a href="https://www.newbalance.com" target="_blank" rel="noopener noreferrer">New Balance</a></li>
+                        <li><a href="https://www.reebok.com" target="_blank" rel="noopener noreferrer">Reebok</a></li>
+                        <li><a href="https://www.underarmour.com" target="_blank" rel="noopener noreferrer">Under Armour</a></li>
+                        <li><a href="https://www.puma.com" target="_blank" rel="noopener noreferrer">Puma</a></li>
+                        <li><a href="https://www.vans.com" target="_blank" rel="noopener noreferrer">Vans</a></li>
+                        <li><a href="https://www.converse.com" target="_blank" rel="noopener noreferrer">Converse</a></li>
+                        <li><a href="https://www.clarks.com" target="_blank" rel="noopener noreferrer">Clarks</a></li>
+                        <li><a href="https://www.geox.com" target="_blank" rel="noopener noreferrer">Geox</a></li>
+                        <li><a href="https://www.hoka.com" target="_blank" rel="noopener noreferrer">Hoka</a></li> <!-- Updated link -->
+                        <li><a href="https://www.brooksrunning.com" target="_blank" rel="noopener noreferrer">Brooks</a></li>
+                         <li><a href="https://www.ecco.com" target="_blank" rel="noopener noreferrer">ECCO</a></li>
+                         <li><a href="https://www.jordan.com" target="_blank" rel="noopener noreferrer">Jordan</a></li>
+                    </ul>
                 </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('casualPage')">Casual</a></h4>
+            </main>
+        </div>
+
+        <!-- ========= CHECKOUT PAGE ========= -->
+        <div id="checkoutPage" class="page-section">
+            <main>
+                <h2 data-translate="shopping_cart_title">Shopping Cart</h2>
+                <div class="checkout-section" id="checkout">
+                    <h3 data-translate="your_items">Your Items</h3>
+                    <ul id="cart-items">
+                        <!-- Cart items dynamically inserted here -->
+                         <li class="empty-cart-message" data-translate="empty_cart_message">Your cart is currently empty.</li>
+                    </ul>
+                    <div class="cart-total"><span data-translate="total_label">Total:</span> $<span id="total-price">0.00</span></div>
+                    <button class="modal-button" onclick="openModal()" id="proceed-checkout-button" disabled data-translate="proceed_checkout_button">Proceed to Checkout</button>
                 </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('formalPage')">Formal</a></h4>    
-                </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('footballPage')">Football</a></h4>
-                </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('basketballPage')">Basketball</a></h4>
-                </div>
-                <div class="product-item">
-                    <h4><a href="#" onclick="showPage('allPage')">All</a></h4>
-                </div>
-            </div>
-        </main>
-    </div>
-    
-    <div id="runningPage" style="display: none;">
-        <main>
-            <h2>Running</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
-                    <h4>Nike Air Zoom Pegasus</h4>
-                    <p>$1,979.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
-                    <h4>Adidas Ultraboost 22</h4>
-                    <p>$3,239.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)">
-                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
-                    <h4>Brooks Ghost 14</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)">
-                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
-                    <h4>Hoka One One Clifton 8</h4>
-                    <p>$2,899.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/bDsegiub-nw" allowfullscreen title="Nike Air Zoom Pegasus 38 Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/U0Dm27S0EHQ" allowfullscreen title="Brooks Ghost 14 Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="trainingPage" style="display: none;">
-        <main>
-            <h2>Training</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)">
-                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
-                    <h4>Nike Metcon 7</h4>
-                    <p>$3,099.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)">
-                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
-                    <h4>Reebok Nano X1</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)">
-                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
-                    <h4>Under Armour HOVR Phantom 2</h4>
-                    <p>$2,999.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/ZsF7fSr7LkI" allowfullscreen title="Nike Metcon 7 Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/mBukH5aEcZQ" allowfullscreen title="Reebok Nano X1 Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="casualPage" style="display: none;">
-        <main>
-            <h2>Casual</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
-                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
-                    <h4>Vans Old Skool</h4>
-                    <p>$1,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)">
-                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
-                    <h4>Converse Chuck Taylor All Star</h4>
-                    <p>$1,299.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/WqdNDyNcn9g" allowfullscreen title="Vans Old Skool Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/kJkGm_4pXXY" allowfullscreen title="Converse Chuck Taylor All Star Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="formalPage" style="display: none;">
-        <main>
-            <h2>Formal</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)">
-                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
-                    <h4>Clarks Desert Boot</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Geox Respira', 2899.82)">
-                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
-                    <h4>Geox Respira</h4>
-                    <p>$2,899.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/8K1kMCpTg8c" allowfullscreen title="Clarks Desert Boot Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/hxZFJJoTXuk" allowfullscreen title="Geox Respira Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="footballPage" style="display: none;">
-        <main>
-            <h2>Football</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14', 3199.82)">
-                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
-                    <h4>Nike Mercurial Vapor 14</h4>
-                    <p>$3,199.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Adidas Predator Freak', 2999.82)">
-                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
-                    <h4>Adidas Predator Freak</h4>
-                    <p>$2,999.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/ay1agT26UV8" allowfullscreen title="Nike Mercurial Vapor 14 Elite Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/lklBgdxyu4E" allowfullscreen title="Adidas Predator Freak.1 Low Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="basketballPage" style="display: none;">
-        <main>
-            <h2>Basketball</h2>
-            <div class="product-list">
-                <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro', 4499.82)">
-                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
-                    <h4>Air Jordan 1 Retro</h4>
-                    <p>$4,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Nike LeBron 18', 3999.82)">
-                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
-                    <h4>Nike LeBron 18</h4>
-                    <p>$3,999.82</p>
-                </div>
-            </div>
-            <h3>Reviews</h3>
-            <div class="video-section">
-                <iframe src="https://www.youtube.com/embed/oeAVUOLAGjg" allowfullscreen title="Air Jordan 1 Retro Review" loading="lazy"></iframe>
-                <iframe src="https://www.youtube.com/embed/gb4ewq1dhQQ" allowfullscreen title="Nike LeBron 18 Performance Review" loading="lazy"></iframe>
-            </div>
-        </main>
-    </div>
-    
-    <div id="allPage" style="display: none;">
-        <main>
-            <h2>All Products</h2>
-            <div class="product-list">
-                <!-- Running Shoes -->
-                <div class="product-item" onclick="openShoeModal('Nike Air Zoom Pegasus', 1979.82)">
-                    <img src="https://imgur.com/cUXuSr8.png" width="116" height="150" alt="Nike Air Zoom Pegasus" loading="lazy">
-                    <h4>Nike Air Zoom Pegasus</h4>
-                    <p>$1,979.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Adidas Ultraboost 22', 3239.82)">
-                    <img src="https://imgur.com/zCTNxBJ.png" width="150" height="150" alt="Adidas Ultraboost 22" loading="lazy">
-                    <h4>Adidas Ultraboost 22</h4>
-                    <p>$3,239.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Brooks Ghost 14', 2499.82)">
-                    <img src="https://imgur.com/qkH9rNS.png" width="150" height="150" alt="Brooks Ghost 14" loading="lazy">
-                    <h4>Brooks Ghost 14</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Hoka One One Clifton 8', 2899.82)">
-                    <img src="https://imgur.com/eea8qr0.png" width="150" height="150" alt="Hoka One One Clifton 8" loading="lazy">
-                    <h4>Hoka One One Clifton 8</h4>
-                    <p>$2,899.82</p>
-                </div>
-                <!-- Training Shoes -->
-                <div class="product-item" onclick="openShoeModal('Nike Metcon 7', 3099.82)">
-                    <img src="https://imgur.com/0a99aCx.png" width="150" height="150" alt="Nike Metcon 7" loading="lazy">
-                    <h4>Nike Metcon 7</h4>
-                    <p>$3,099.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Reebok Nano X1', 2499.82)">
-                    <img src="https://imgur.com/Oh3F8JI.png" width="150" height="150" alt="Reebok Nano X1" loading="lazy">
-                    <h4>Reebok Nano X1</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Under Armour HOVR Phantom 2', 2999.82)">
-                    <img src="https://imgur.com/RkfSJbm.png" width="150" height="150" alt="Under Armour HOVR Phantom 2" loading="lazy">
-                    <h4>Under Armour HOVR Phantom 2</h4>
-                    <p>$2,999.82</p>
-                </div>
-                <!-- Casual Shoes -->
-                <div class="product-item" onclick="openShoeModal('Vans Old Skool', 1499.82)">
-                    <img src="https://imgur.com/PVkNZ31.png" width="150" height="150" alt="Vans Old Skool" loading="lazy">
-                    <h4>Vans Old Skool</h4>
-                    <p>$1,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Converse Chuck Taylor All Star', 1299.82)">
-                    <img src="https://imgur.com/QDF8iiP.png" width="150" height="150" alt="Converse Chuck Taylor All Star" loading="lazy">
-                    <h4>Converse Chuck Taylor All Star</h4>
-                    <p>$1,299.82</p>
-                </div>
-                <!-- Formal Shoes -->
-                <div class="product-item" onclick="openShoeModal('Clarks Desert Boot', 2499.82)">
-                    <img src="https://imgur.com/AWpH3MQ.png" width="150" height="150" alt="Clarks Desert Boot" loading="lazy">
-                    <h4>Clarks Desert Boot</h4>
-                    <p>$2,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Geox Respira', 2899.82)">
-                    <img src="https://imgur.com/lKTIOBM.png" width="150" height="150" alt="Geox Respira" loading="lazy">
-                    <h4>Geox Respira</h4>
-                    <p>$2,899.82</p>
-                </div>
-                <!-- Football Shoes -->
-                <div class="product-item" onclick="openShoeModal('Nike Mercurial Vapor 14', 3199.82)">
-                    <img src="https://imgur.com/MBYwb4V.png" width="150" height="150" alt="Nike Mercurial Vapor 14" loading="lazy">
-                    <h4>Nike Mercurial Vapor 14</h4>
-                    <p>$3,199.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Adidas Predator Freak', 2999.82)">
-                    <img src="https://imgur.com/26JjBeQ.png" width="150" height="150" alt="Adidas Predator Freak" loading="lazy">
-                    <h4>Adidas Predator Freak</h4>
-                    <p>$2,999.82</p>
-                </div>
-                <!-- Basketball Shoes -->
-                <div class="product-item" onclick="openShoeModal('Air Jordan 1 Retro', 4499.82)">
-                    <img src="https://imgur.com/iTOGVmN.png" width="150" height="150" alt="Air Jordan 1 Retro" loading="lazy">
-                    <h4>Air Jordan 1 Retro</h4>
-                    <p>$4,499.82</p>
-                </div>
-                <div class="product-item" onclick="openShoeModal('Nike LeBron 18', 3999.82)">
-                    <img src="https://imgur.com/82W7SmX.png" width="150" height="150" alt="Nike LeBron 18" loading="lazy">
-                    <h4>Nike LeBron 18</h4>
-                    <p>$3,999.82</p>
-                </div>
-            </div>
-        </main>
-    </div>
-    
-    <div id="socialMediaPage" style="display: none;">
-        <main>
-            <h2>Social Media</h2>
-            <div class="social-media-container">
-                <ul>
-                    <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
-                    <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
-                </ul>
-            </div>
-        </main>
-    </div>
-    
-    <div id="brandsPage" style="display: none;">
-        <main>
-            <h2>Our Brands</h2>
-            <div class="brands-container">
-                <ul>
-                    <li><a href="https://www.nike.com" target="_blank">Nike</a></li>
-                    <li><a href="https://www.adidas.com" target="_blank">Adidas</a></li>
-                    <li><a href="https://www.newbalance.com" target="_blank">New Balance</a></li>
-                    <li><a href="https://www.reebok.com" target="_blank">Reebok</a></li>
-                    <li><a href="https://www.vans.com" target="_blank">Vans</a></li>
-                    <li><a href="https://www.converse.com" target="_blank">Converse</a></li>
-                    <li><a href="https://www.clarks.com" target="_blank">Clarks</a></li>
-                    <li><a href="https://www.geox.com" target="_blank">Geox</a></li>
-                    <li><a href="https://www.hokaoneone.com" target="_blank">Hoka One One</a></li>
-                    <li><a href="https://www.brooksrunning.com" target="_blank">Brooks</a></li>
-                </ul>
-            </div>
-        </main>
-    </div>
-    
-    <div id="checkoutPage" style="display: none;">
-        <main>
-            <h2>Checkout</h2>
-            <div class="checkout-section" id="checkout">
-                <ul id="cart-items"></ul>
-                <h4>Total: $<span id="total-price">0.00</span></h4>
-                <button class="modal-button" onclick="openModal()">Proceed to Checkout</button>
-            </div>
-        </main>
-    </div>
-    
+            </main>
+        </div>
+
+        <!-- ========= FAQ PAGE ========= -->
+        <div id="faqPage" class="page-section">
+            <main>
+                <h2 data-translate="faq_title">Frequently Asked Questions</h2>
+                <section class="faq-container" aria-label="Frequently Asked Questions">
+                    <details>
+                        <summary data-translate="faq_q1_title">What are your shipping options and costs?</summary>
+                        <div data-translate="faq_q1_answer">
+                            <p>We offer Standard (5-7 business days), Expedited (2-3 business days), and Express (1 business day) shipping. Costs vary based on location and order weight, calculated at checkout. Orders over $100 qualify for free Standard shipping within the continental US.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary data-translate="faq_q2_title">What is your return policy?</summary>
+                        <div data-translate="faq_q2_answer">
+                            <p>We accept returns of unworn, undamaged shoes in their original packaging within 30 days of delivery. Please visit our Returns Center page to initiate a return. Some exclusions may apply to final sale items.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary data-translate="faq_q3_title">How do I know what size to order?</summary>
+                        <div data-translate="faq_q3_answer">
+                            <p>We recommend checking the specific brand's sizing chart, usually available on the product page. General size conversion charts (US, UK, EU) are also available in our Size Guide section. If you're between sizes, consider the shoe type (e.g., running shoes often benefit from sizing up slightly).</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary data-translate="faq_q4_title">What payment methods do you accept?</summary>
+                        <div data-translate="faq_q4_answer">
+                            <p>We accept major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and Shoe Deals gift cards.</p>
+                        </div>
+                    </details>
+                     <details>
+                        <summary data-translate="faq_q5_title">How can I track my order?</summary>
+                        <div data-translate="faq_q5_answer">
+                            <p>Once your order ships, you will receive an email confirmation containing a tracking number and a link to the carrier's website. You can use this information to monitor your package's progress.</p>
+                        </div>
+                    </details>
+                     <details>
+                        <summary data-translate="faq_q6_title">Do you ship internationally?</summary>
+                        <div data-translate="faq_q6_answer">
+                            <p>Currently, we primarily ship within the United States. We are working on expanding our international shipping options. Please check back later or contact customer service for specific inquiries.</p>
+                        </div>
+                    </details>
+                </section>
+            </main>
+        </div>
+
+    </div> <!-- End Page Sections Wrapper -->
+
+
+    <!-- ========= MODALS ========= -->
+
+    <!-- Checkout Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Checkout</h2>
-            <form id="checkout-form" onsubmit="return submitCheckout(event)">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required><br><br>
-                <button type="submit" class="modal-button">Submit</button>
+            <span class="close" onclick="closeModal()" title="Close Checkout">×</span>
+            <h2 data-translate="checkout_details_title">Checkout Details</h2>
+            <form id="checkout-form" onsubmit="submitCheckout(event)">
+                <label for="name" data-translate="checkout_label_name">Full Name:</label>
+                <input type="text" id="name" name="name" required placeholder="e.g., Jane Doe">
+
+                <label for="email" data-translate="checkout_label_email">Email Address:</label>
+                <input type="email" id="email" name="email" required placeholder="e.g., jane.doe@example.com">
+
+                <label for="address" data-translate="checkout_label_address">Shipping Address:</label>
+                <input type="text" id="address" name="address" required placeholder="e.g., 123 Shoe Lane, Sneakerville">
+
+                <button type="submit" class="modal-button" data-translate="confirm_purchase_button">Confirm Purchase</button>
             </form>
         </div>
     </div>
-    
+
+    <!-- Shoe Details & Add to Cart Modal -->
     <div id="shoeModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeShoeModal()">&times;</span>
-            <h2 id="shoeModalTitle"></h2>
-            <form id="shoeForm" onsubmit="return addToCartFromModal(event)">
-                <label for="size">Size:</label>
+            <span class="close" onclick="closeShoeModal()" title="Close Product Options">×</span>
+            <h2 id="shoeModalTitle" data-translate="product_details_title">Product Details</h2> <!-- Basic translation key -->
+            <form id="shoeForm" onsubmit="addToCartFromModal(event)">
+                 <!-- Hidden fields to store base product info -->
+                 <input type="hidden" id="modalProductName" name="productName">
+                 <input type="hidden" id="modalProductPrice" name="productPrice">
+
+                <label for="size" data-translate="select_size_label">Select Size:</label>
                 <select id="size" name="size" required>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select><br><br>
-                <label for="color">Color:</label>
+                    <option value="" disabled selected data-translate="choose_size_option">-- Choose Size --</option>
+                    <option value="6">US Men's 6 / US Women's 7.5</option>
+                    <option value="7">US Men's 7 / US Women's 8.5</option>
+                    <option value="8">US Men's 8 / US Women's 9.5</option>
+                    <option value="9">US Men's 9 / US Women's 10.5</option>
+                    <option value="10">US Men's 10 / US Women's 11.5</option>
+                    <option value="11">US Men's 11 / US Women's 12.5</option>
+                    <option value="12">US Men's 12 / US Women's 13.5</option>
+                </select>
+
+                <label for="color" data-translate="select_color_label">Select Color:</label>
                 <select id="color" name="color" required>
-                    <option value="Black">Black</option>
-                    <option value="White">White</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Red">Red</option>
-                    <option value="Green">Green</option>
-                </select><br><br>
-                <button type="submit" class="modal-button">Add to Cart</button>
+                     <option value="" disabled selected data-translate="choose_color_option">-- Choose Color --</option>
+                    <option value="Black" data-translate="color_black">Black</option>
+                    <option value="White" data-translate="color_white">White</option>
+                    <option value="Blue" data-translate="color_blue">Blue</option>
+                    <option value="Red" data-translate="color_red">Red</option>
+                    <option value="Green" data-translate="color_green">Green</option>
+                    <option value="Gray" data-translate="color_gray">Gray</option>
+                    <option value="Multicolor" data-translate="color_multicolor">Multicolor</option>
+                </select>
+
+                <button type="submit" class="modal-button" data-translate="add_to_cart_button">Add to Cart</button>
             </form>
         </div>
     </div>
-    
+
+    <!-- ========= FOOTER ========= -->
     <footer>
-        <p>&copy; 2025 Shoe Deals. All rights reserved.</p>
+        <p>© <span id="currentYear"></span> Shoe Deals. All rights reserved. | Your Destination for Great Footwear Prices.</p>
+        <p>
+            <!-- Added FAQ Link -->
+            <a href="#" onclick="event.preventDefault(); showPage('faqPage');" data-translate="faq_link">FAQ</a> |
+            <a href="#" onclick="alert('Privacy Policy link clicked');" data-translate="privacy_policy_link">Privacy Policy</a> |
+            <a href="#" onclick="alert('Terms of Service link clicked');" data-translate="terms_service_link">Terms of Service</a>
+        </p>
     </footer>
-    
+
+    <!-- ========= BACK TO HOME BUTTON ========= -->
+    <a href="#" class="back-to-home" title="Back to Home" onclick="event.preventDefault(); showPage('homePage');">🏠</a>
+
+    <!-- ========= JAVASCRIPT ========= -->
     <script>
+        // --- State Variables ---
         let cart = [];
         let total = 0;
+        let currentLanguage = 'en'; // Track current language
 
-        function addToCart(product, price) {
-            cart.push({ product, price });
-            total += price;
-            updateCartDisplay();
-        }
+        // --- DOM Element References ---
+        const cartItemsElement = document.getElementById("cart-items");
+        const totalPriceElement = document.getElementById("total-price");
+        const checkoutButton = document.getElementById('proceed-checkout-button');
+        const checkoutModal = document.getElementById("myModal");
+        const shoeModal = document.getElementById("shoeModal");
+        const shoeModalTitle = document.getElementById("shoeModalTitle");
+        const modalProductNameInput = document.getElementById("modalProductName");
+        const modalProductPriceInput = document.getElementById("modalProductPrice");
+        const shoeForm = document.getElementById('shoeForm');
+        const currentYearSpan = document.getElementById('currentYear');
+        const languageButton = document.getElementById('languageButton');
 
+        // --- Core Functions ---
+
+        /**
+         * Updates the shopping cart display in the HTML.
+         * (Placeholder for potential translation updates if needed)
+         */
         function updateCartDisplay() {
-            const cartItems = document.getElementById("cart-items");
-            cartItems.innerHTML = "";
-            cart.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
-                cartItems.appendChild(li);
-            });
-            document.getElementById("total-price").textContent = total.toFixed(2);
+            cartItemsElement.innerHTML = ""; // Clear current items
+            const emptyCartMsg = getTranslation("empty_cart_message") || "Your cart is currently empty."; // Example of getting translated text
+            const removeBtnText = getTranslation("remove_button") || "Remove";
+
+            if (cart.length === 0) {
+                 const li = document.createElement("li");
+                 li.textContent = emptyCartMsg;
+                 li.classList.add("empty-cart-message"); // Add class for styling
+                 cartItemsElement.appendChild(li);
+                 checkoutButton.disabled = true; // Disable checkout button
+                 checkoutButton.title = getTranslation("add_items_tooltip") || "Add items to cart to proceed"; // Add tooltip
+            } else {
+                 cart.forEach((item, index) => {
+                    const li = document.createElement("li");
+                    // NOTE: Product names added via JS (like size/color) won't be automatically translated by the simple example below.
+                    // Full translation would require translating these parts too.
+                    li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+
+                    // Add a remove button
+                    const removeBtn = document.createElement("button");
+                    removeBtn.textContent = removeBtnText;
+                    removeBtn.classList.add("remove-item"); // Add class for styling
+                    removeBtn.title = `${removeBtnText} ${item.product} from cart`; // Might need more complex translation
+                    removeBtn.setAttribute('aria-label', `${removeBtnText} ${item.product} from cart`); // Accessibility
+                    removeBtn.onclick = function() { removeFromCart(index); };
+
+                    li.appendChild(removeBtn);
+                    cartItemsElement.appendChild(li);
+                });
+                 checkoutButton.disabled = false; // Enable checkout button
+                 checkoutButton.title = getTranslation("proceed_checkout_tooltip") || "Proceed to checkout"; // Update tooltip
+            }
+            // Update total price text (label might need translation)
+            const totalLabel = getTranslation("total_label") || "Total:";
+            totalPriceElement.parentElement.firstChild.textContent = totalLabel + " "; // Update the text node before the span
+            totalPriceElement.textContent = total.toFixed(2);
+
+             // Update proceed button text (if cart is empty/not)
+             updateCheckoutButtonText();
         }
 
+         /**
+          * Updates the text of the Proceed to Checkout button based on translation.
+          */
+         function updateCheckoutButtonText() {
+             if (checkoutButton) {
+                 checkoutButton.textContent = getTranslation("proceed_checkout_button") || "Proceed to Checkout";
+             }
+         }
+
+        /**
+         * Removes an item from the cart by its index.
+         * @param {number} index - The index of the item to remove.
+         */
+         function removeFromCart(index) {
+             if (index >= 0 && index < cart.length) {
+                 total -= cart[index].price; // Subtract price before removing
+                 const removedItem = cart.splice(index, 1)[0]; // Remove item and get it
+                 console.log(`Removed from cart: ${removedItem.product}`);
+                 updateCartDisplay(); // Update the display
+             } else {
+                 console.error("Invalid index for removing item from cart:", index);
+             }
+         }
+
+        /**
+         * Opens the main checkout modal if the cart is not empty.
+         */
         function openModal() {
-            document.getElementById("myModal").style.display = "block";
+            if (cart.length > 0) {
+                 checkoutModal.style.display = "block";
+            } else {
+                alert(getTranslation("empty_cart_alert") || "Your cart is empty. Please add items before checking out.");
+            }
         }
 
+        /**
+         * Closes the main checkout modal.
+         */
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+            checkoutModal.style.display = "none";
         }
 
+        /**
+         * Opens the shoe details/options modal.
+         * @param {string} product - The base name of the product.
+         * @param {number} price - The price of the product.
+         */
+        function openShoeModal(product, price) {
+             // Note: Product name itself isn't easily translatable here without a database/lookup
+             shoeModalTitle.textContent = product; // Set title (base name)
+             // Update the generic "Product Details" text if the element has the data-translate attribute
+             const titleElement = document.querySelector('#shoeModalTitle[data-translate]');
+             if(titleElement) {
+                 titleElement.textContent = getTranslation(titleElement.getAttribute('data-translate')) || product;
+             } else {
+                shoeModalTitle.textContent = product;
+             }
+
+             modalProductNameInput.value = product; // Store base name
+             modalProductPriceInput.value = price; // Store base price
+
+             shoeForm.reset(); // Reset size/color selections
+             // Potentially update static text in the modal based on current language
+             updateElementTranslations(shoeModal); // Translate static parts of the modal
+
+             shoeModal.style.display = "block";
+        }
+
+        /**
+         * Closes the shoe details/options modal.
+         */
+        function closeShoeModal() {
+            shoeModal.style.display = "none";
+        }
+
+        /**
+         * Adds the selected shoe (with options) to the cart from the modal.
+         * @param {Event} event - The form submission event.
+         */
+        function addToCartFromModal(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Retrieve details from the form/hidden inputs
+            const productBaseName = modalProductNameInput.value;
+            const price = parseFloat(modalProductPriceInput.value);
+            const sizeSelect = document.getElementById("size");
+            const colorSelect = document.getElementById("color");
+            const size = sizeSelect.value;
+            const color = colorSelect.value;
+
+            // Validate selections
+            if (!size || !color) {
+                alert(getTranslation("select_size_color_alert") || "Please select both size and color.");
+                return false; // Stop execution
+            }
+
+             // Get selected option text for better display (handles potential future translation of options)
+             const sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
+             const colorText = colorSelect.options[colorSelect.selectedIndex].text;
+
+            // Create a descriptive name for the cart item (using selected text)
+            // Translation of "Size:", "Color:" would need to be handled if dynamic string generation is used heavily
+             const fullProductName = `${productBaseName} (Size: ${sizeText}, Color: ${colorText})`;
+
+
+            // Add to cart array
+            cart.push({ product: fullProductName, price: price });
+            total += price; // Update total
+
+            console.log(`Added to cart: ${fullProductName}, Price: ${price}`);
+
+            updateCartDisplay(); // Refresh cart view
+            closeShoeModal(); // Close the modal
+
+             // Optional: Confirmation feedback to the user
+             // Consider a less intrusive notification than alert() in a real application
+             const addedAlert = getTranslation("item_added_alert") || "%item% added to your cart!";
+             alert(addedAlert.replace('%item%', `${productBaseName} (Size: ${sizeText}, Color: ${colorText})`));
+             return true; // Indicate success
+        }
+
+
+        /**
+         * Handles the final checkout form submission (simulated).
+         * @param {Event} event - The form submission event.
+         */
         function submitCheckout(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent actual form submission
+
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
             const address = document.getElementById("address").value;
-            alert(`Checkout successful!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nTotal: $${total.toFixed(2)}`);
+
+            // Basic validation (HTML5 'required' handles most)
+            if (!name || !email || !address) {
+                 alert(getTranslation("fill_all_fields_alert") || "Please fill in all required fields.");
+                 return false;
+            }
+
+            // --- Simulation ---
+            console.log("Checkout submitted:", { name, email, address, cart, total });
+            const successMsg = getTranslation("checkout_success_alert") || `Checkout successful!\n\nOrder Details:\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nTotal: $${total.toFixed(2)}\nItems: ${cart.map(item => `\n - ${item.product}`).join('')}\n\nThank you for your purchase!`;
+             // Manually replace placeholders if the simple translation string contains them
+             let formattedMsg = successMsg;
+             formattedMsg = formattedMsg.replace('%name%', name);
+             formattedMsg = formattedMsg.replace('%email%', email);
+             formattedMsg = formattedMsg.replace('%address%', address);
+             formattedMsg = formattedMsg.replace('%total%', total.toFixed(2));
+             formattedMsg = formattedMsg.replace('%items%', cart.map(item => `\n - ${item.product}`).join(''));
+
+             alert(formattedMsg);
+
+
+            // Clear cart and update display
             cart = [];
             total = 0;
             updateCartDisplay();
-            closeModal();
+
+            closeModal(); // Close the checkout modal
+            showPage('homePage'); // Redirect to home page after successful checkout
+            return true;
         }
-        
-        function showPage(pageId) {
-            const pages = ['homePage', 'runningPage', 'trainingPage', 'casualPage', 'formalPage', 'footballPage', 'basketballPage', 'socialMediaPage', 'brandsPage', 'checkoutPage', 'allPage'];
-            pages.forEach(function(id) {
-                document.getElementById(id).style.display = 'none';
+
+
+        /**
+         * Shows a specific page section and hides others.
+         * @param {string} pageIdToShow - The ID of the page section div to make active.
+         */
+        function showPage(pageIdToShow) {
+            const pages = document.querySelectorAll('.page-section');
+
+            pages.forEach(page => {
+                if (page.id === pageIdToShow) {
+                    page.classList.add('active');
+                    // Translate static content on the page being shown
+                    updateElementTranslations(page);
+                } else {
+                    page.classList.remove('active');
+                }
             });
-            document.getElementById(pageId).style.display = 'block';
+             window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll smoothly to top
+             console.log(`Showing page: ${pageIdToShow}`);
         }
 
-        function openShoeModal(product, price) {
-            document.getElementById("shoeModalTitle").textContent = product;
-            document.getElementById("shoeModal").style.display = "block";
-            document.getElementById("shoeForm").dataset.product = product;
-            document.getElementById("shoeForm").dataset.price = price;
+        // --- Language Translation (Placeholder & Basic Implementation) ---
+
+        // Example dictionary (INCOMPLETE - needs all keys and languages)
+        const translations = {
+            en: {
+                featured_deals: "Featured Deals",
+                products_button: "Products",
+                cart_button: "Cart",
+                social_button: "Social",
+                brands_button: "Brands",
+                shop_by_category: "Shop by Category",
+                customer_testimonials_title: "What Our Customers Say",
+                testimonial_1: `"Fantastic selection and unbeatable prices. My go-to place for running shoes now!"`,
+                testimonial_2: `"The checkout process was smooth, and my shoes arrived even faster than expected. Highly recommend!"`,
+                testimonial_3: `"Great quality shoes that look even better in person. The customer service was helpful too."`,
+                category_running: "Running",
+                category_training: "Training",
+                category_casual: "Casual",
+                category_formal: "Formal",
+                category_football: "Football",
+                category_basketball: "Basketball",
+                category_all: "All Products",
+                expert_reviews: "Expert Reviews",
+                style_spotlights: "Style Spotlights",
+                style_comfort_insights: "Style & Comfort Insights",
+                on_pitch_reviews: "On-Pitch Performance Reviews",
+                court_performance_reviews: "Court Performance Reviews",
+                connect_with_us: "Connect With Us",
+                shop_by_brand: "Shop By Brand",
+                shopping_cart_title: "Shopping Cart",
+                your_items: "Your Items",
+                empty_cart_message: "Your cart is currently empty.",
+                total_label: "Total:",
+                proceed_checkout_button: "Proceed to Checkout",
+                faq_title: "Frequently Asked Questions",
+                faq_link: "FAQ",
+                privacy_policy_link: "Privacy Policy",
+                terms_service_link: "Terms of Service",
+                checkout_details_title: "Checkout Details",
+                checkout_label_name: "Full Name:",
+                checkout_label_email: "Email Address:",
+                checkout_label_address: "Shipping Address:",
+                confirm_purchase_button: "Confirm Purchase",
+                product_details_title: "Product Details",
+                select_size_label: "Select Size:",
+                select_color_label: "Select Color:",
+                choose_size_option: "-- Choose Size --",
+                choose_color_option: "-- Choose Color --",
+                add_to_cart_button: "Add to Cart",
+                remove_button: "Remove",
+                add_items_tooltip: "Add items to cart to proceed",
+                proceed_checkout_tooltip: "Proceed to checkout",
+                empty_cart_alert: "Your cart is empty. Please add items before checking out.",
+                select_size_color_alert: "Please select both size and color.",
+                item_added_alert: "%item% added to your cart!",
+                fill_all_fields_alert: "Please fill in all required fields.",
+                checkout_success_alert: `Checkout successful!\n\nOrder Details:\nName: %name%\nEmail: %email%\nAddress: %address%\nTotal: $%total%\nItems: %items%\n\nThank you for your purchase!`,
+                // FAQ content...
+                faq_q1_title: "What are your shipping options and costs?",
+                faq_q1_answer: "<p>We offer Standard (5-7 business days), Expedited (2-3 business days), and Express (1 business day) shipping. Costs vary based on location and order weight, calculated at checkout. Orders over $100 qualify for free Standard shipping within the continental US.</p>",
+                faq_q2_title: "What is your return policy?",
+                faq_q2_answer: "<p>We accept returns of unworn, undamaged shoes in their original packaging within 30 days of delivery. Please visit our Returns Center page to initiate a return. Some exclusions may apply to final sale items.</p>",
+                // ... Add all other FAQ keys and other keys needed
+            },
+            es: {
+                featured_deals: "Ofertas Destacadas",
+                products_button: "Productos",
+                cart_button: "Carrito",
+                social_button: "Social",
+                brands_button: "Marcas",
+                shop_by_category: "Comprar por Categoría",
+                customer_testimonials_title: "Lo Que Dicen Nuestros Clientes",
+                testimonial_1: `"¡Selección fantástica y precios imbatibles! Mi lugar preferido para zapatillas de correr ahora."`,
+                testimonial_2: `"El proceso de pago fue sencillo y mis zapatos llegaron incluso más rápido de lo esperado. ¡Muy recomendable!"`,
+                testimonial_3: `"Zapatos de gran calidad que se ven aún mejor en persona. El servicio al cliente también fue útil."`,
+                category_running: "Correr",
+                category_training: "Entrenamiento",
+                category_casual: "Casual",
+                category_formal: "Formal",
+                category_football: "Fútbol",
+                category_basketball: "Baloncesto",
+                category_all: "Todos los Productos",
+                expert_reviews: "Reseñas de Expertos",
+                style_spotlights: "Focos de Estilo",
+                style_comfort_insights: "Perspectivas de Estilo y Comodidad",
+                on_pitch_reviews: "Reseñas de Rendimiento en el Campo",
+                court_performance_reviews: "Reseñas de Rendimiento en la Cancha",
+                connect_with_us: "Conéctate Con Nosotros",
+                shop_by_brand: "Comprar por Marca",
+                shopping_cart_title: "Carrito de Compras",
+                your_items: "Tus Artículos",
+                empty_cart_message: "Tu carrito está vacío actualmente.",
+                total_label: "Total:",
+                proceed_checkout_button: "Proceder al Pago",
+                faq_title: "Preguntas Frecuentes",
+                faq_link: "PF",
+                privacy_policy_link: "Política de Privacidad",
+                terms_service_link: "Términos de Servicio",
+                checkout_details_title: "Detalles de Pago",
+                checkout_label_name: "Nombre Completo:",
+                checkout_label_email: "Correo Electrónico:",
+                checkout_label_address: "Dirección de Envío:",
+                confirm_purchase_button: "Confirmar Compra",
+                product_details_title: "Detalles del Producto",
+                select_size_label: "Seleccionar Talla:",
+                select_color_label: "Seleccionar Color:",
+                choose_size_option: "-- Elegir Talla --",
+                choose_color_option: "-- Elegir Color --",
+                add_to_cart_button: "Añadir al Carrito",
+                remove_button: "Eliminar",
+                add_items_tooltip: "Añade artículos al carrito para proceder",
+                proceed_checkout_tooltip: "Proceder al pago",
+                empty_cart_alert: "Tu carrito está vacío. Por favor, añade artículos antes de proceder al pago.",
+                select_size_color_alert: "Por favor, selecciona talla y color.",
+                item_added_alert: "¡%item% añadido a tu carrito!",
+                fill_all_fields_alert: "Por favor, completa todos los campos requeridos.",
+                checkout_success_alert: `¡Pago exitoso!\n\nDetalles del Pedido:\nNombre: %name%\nCorreo: %email%\nDirección: %address%\nTotal: $%total%\nArtículos: %items%\n\n¡Gracias por tu compra!`,
+                 // FAQ content...
+                faq_q1_title: "¿Cuáles son sus opciones y costos de envío?",
+                faq_q1_answer: "<p>Ofrecemos envío Estándar (5-7 días hábiles), Rápido (2-3 días hábiles) y Expreso (1 día hábil). Los costos varían según la ubicación y el peso del pedido, calculados al finalizar la compra. Los pedidos superiores a $100 califican para envío Estándar gratuito dentro de EE. UU. continental.</p>",
+                faq_q2_title: "¿Cuál es su política de devoluciones?",
+                faq_q2_answer: "<p>Aceptamos devoluciones de zapatos sin usar y sin daños en su embalaje original dentro de los 30 días posteriores a la entrega. Visite nuestra página del Centro de Devoluciones para iniciar una devolución. Pueden aplicarse algunas exclusiones a los artículos en venta final.</p>",
+                // ... Add Spanish translations for all other keys ...
+            },
+            // Add de, zh, fr, hi dictionaries here...
+             de: { // Example - VERY incomplete German
+                 featured_deals: "Ausgewählte Angebote",
+                 products_button: "Produkte",
+                 cart_button: "Warenkorb",
+                 // ... many more needed ...
+                 faq_title: "Häufig gestellte Fragen",
+                 faq_link: "FAQ",
+            },
+             zh: { // Example - VERY incomplete Chinese
+                 featured_deals: "精选优惠",
+                 products_button: "产品",
+                 cart_button: "购物车",
+                 // ... many more needed ...
+                 faq_title: "常见问题解答",
+                 faq_link: "常见问题",
+            },
+            fr: { // Example - VERY incomplete French
+                featured_deals: "Offres en Vedette",
+                products_button: "Produits",
+                cart_button: "Panier",
+                // ... many more needed ...
+                faq_title: "Questions Fréquemment Posées",
+                faq_link: "FAQ",
+            },
+             hi: { // Example - VERY incomplete Hindi
+                 featured_deals: "विशेष सौदे",
+                 products_button: "उत्पाद",
+                 cart_button: "कार्ट",
+                 // ... many more needed ...
+                 faq_title: "अक्सर पूछे जाने वाले प्रश्न",
+                 faq_link: "FAQ",
+            }
+        };
+
+        /**
+         * Retrieves a translated string for a given key and language.
+         * Falls back to English if the key or language is missing.
+         * @param {string} key - The translation key (e.g., 'featured_deals').
+         * @returns {string|null} The translated string or null if not found even in English.
+         */
+        function getTranslation(key) {
+            const langDict = translations[currentLanguage];
+            const fallbackDict = translations.en;
+
+            if (langDict && langDict[key]) {
+                return langDict[key];
+            } else if (fallbackDict && fallbackDict[key]) {
+                console.warn(`Translation key '${key}' not found for language '${currentLanguage}', using English fallback.`);
+                return fallbackDict[key];
+            } else {
+                console.error(`Translation key '${key}' not found in English fallback either.`);
+                return null; // Or return the key itself: return key;
+            }
         }
 
-        function closeShoeModal() {
-            document.getElementById("shoeModal").style.display = "none";
+        /**
+         * Updates all elements with 'data-translate' attributes within a given container.
+         * @param {HTMLElement} container - The parent element to search within (e.g., document.body or a specific page section).
+         */
+        function updateElementTranslations(container = document.body) {
+            const elements = container.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                const translatedText = getTranslation(key);
+                if (translatedText !== null) {
+                     // Handle different element types (e.g., inputs might need placeholder)
+                    if (el.tagName === 'INPUT' && el.placeholder) {
+                         el.placeholder = translatedText;
+                    } else if(el.tagName === 'TEXTAREA' && el.placeholder) {
+                         el.placeholder = translatedText;
+                    } else if(el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'SUMMARY' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'H4' || el.tagName === 'P' || el.tagName === 'SPAN' || el.tagName === 'LABEL' || el.tagName === 'DIV' || el.tagName === 'OPTION' || el.tagName === 'LI' || el.tagName === 'BLOCKQUOTE' || el.tagName === 'CITE') {
+                        // For elements where we replace innerHTML (like FAQ answers with <p> tags)
+                        if(el.getAttribute('data-translate-html') === 'true') {
+                            el.innerHTML = translatedText;
+                        } else {
+                            el.textContent = translatedText;
+                        }
+                    } else {
+                         // Default to textContent for other elements or if unsure
+                        el.textContent = translatedText;
+                    }
+                }
+            });
+
+             // Update dynamic elements like cart display
+             if (container === document.body || container.contains(cartItemsElement)) {
+                 updateCartDisplay();
+             }
         }
 
-        function addToCartFromModal(event) {
-    event.preventDefault();
-    const product = document.getElementById("shoeForm").dataset.product;
-    const price = parseFloat(document.getElementById("shoeForm").dataset.price);
-    const size = document.getElementById("size").value;
-    const color = document.getElementById("color").value;
-    cart.push({ product: `${product} (Size: ${size}, Color: ${color})`, price: price });
-    total += price;
-    updateCartDisplay();
-    closeShoeModal();
-}
+        /**
+         * Changes the website language (Placeholder).
+         * @param {string} langCode - The language code (e.g., 'en', 'es').
+         */
+        function changeLanguage(langCode) {
+            console.log("Language change requested to:", langCode);
+
+            // --- VERY BASIC IMPLEMENTATION ---
+            // 1. Update the current language state
+            currentLanguage = langCode;
+
+            // 2. Update the language button text
+            if (languageButton) {
+                 // Text like "Language" should also be translated
+                const langButtonBaseText = getTranslation("language_button_text") || "Language";
+                languageButton.textContent = `${langButtonBaseText} (${langCode.toUpperCase()})`;
+            }
+
+            // 3. Update text content of elements with data-translate attributes
+            updateElementTranslations(); // Update whole document
+
+            // 4. Potentially update the document's lang attribute
+            document.documentElement.lang = langCode;
+
+            // IMPORTANT: This basic implementation only changes text marked with `data-translate`.
+            // - It does NOT handle complex UI changes, date/number formatting, or dynamically generated content (like product names with sizes/colors in cart).
+            // - A robust solution usually involves a library like i18next or a framework's i18n features.
+            // - The 'translations' dictionary needs to be fully populated.
+        }
+
+
+        // --- Event Listeners & Initial Setup ---
+
+        // Close modals if user clicks outside the modal content
+        window.onclick = function(event) {
+            if (event.target == checkoutModal) {
+                closeModal();
+            }
+            if (event.target == shoeModal) {
+                closeShoeModal();
+            }
+        }
+
+         // Close modals with Escape key
+         document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                if (checkoutModal.style.display === "block") {
+                    closeModal();
+                }
+                if (shoeModal.style.display === "block") {
+                    closeShoeModal();
+                }
+            }
+        });
+
+        // Set current year in footer
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Initialize the cart display and ensure the correct page is shown on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+            // Set initial translations based on default language (en)
+            updateElementTranslations();
+            // Ensure only the 'homePage' has the 'active' class initially (handled by HTML structure now)
+            console.log("Website Initialized. Cart Updated. Default Language: EN");
+        });
+
     </script>
-    
-    <a href="#" class="back-to-top" onclick="showPage('homePage')">🏠</a>
+
 </body>
 </html>
